@@ -24,14 +24,59 @@ trafficCarPic.onload = function(){
   trafficCarPicLoaded = true;
 };
 trafficCarPic.src = "file:///Users/Shebby/Downloads/purplee.png"
-
 // Red Traffic Car
 var trafficCarPic1 = document.createElement("img");
 var trafficCarPicLoaded1 = false;
 trafficCarPic1.onload = function(){
 trafficCarPicLoaded1 = true;
 };
-trafficCarPic1.src = "file:///Users/Shebby/Downloads/imageedit_2_3473376709.png"
+trafficCarPic1.src = "file:///Users/Shebby/Downloads/imageedit_2_4270592797.png"
+// Green Traffic Car
+var trafficCarPic2 = document.createElement("img");
+var trafficCarPicLoaded2 = false;
+trafficCarPic2.onload = function(){
+trafficCarPicLoaded2 = true;
+};
+trafficCarPic2.src = "file:///Users/Shebby/Downloads/imageedit_3_2943024884.png"
+
+// Green Minivan
+var trafficCarPic3 = document.createElement("img");
+var trafficCarPicLoaded3 = false;
+trafficCarPic3.onload = function(){
+trafficCarPicLoaded3 = true;
+};
+trafficCarPic3.src = "file:///Users/Shebby/Downloads/imageedit_2_9442599780.gif"
+
+
+// Yellow car
+var trafficCarPic4 = document.createElement("img");
+var trafficCarPicLoaded4 = false;
+trafficCarPic4.onload = function(){
+trafficCarPicLoaded4 = true;
+};
+trafficCarPic4.src = "file:///Users/Shebby/Downloads/imageedit_2_3424037903.png"
+
+// ANother Yellow Car
+var trafficCarPic5 = document.createElement("img");
+var trafficCarPicLoaded5 = false;
+trafficCarPic5.onload = function(){
+trafficCarPicLoaded5 = true;
+};
+trafficCarPic5.src = "file:///Users/Shebby/Downloads/imageedit_3_8064753901.png"
+
+var trafficCarPic6 = document.createElement("img");
+var trafficCarPicLoaded6 = false;
+trafficCarPic6.onload = function(){
+trafficCarPicLoaded6 = true;
+};
+trafficCarPic6.src = "file:///Users/Shebby/Downloads/imageedit_3_8064753901.png"
+
+
+
+
+
+
+
 
 // Cop Car
 var copPic = document.createElement("img");
@@ -40,6 +85,13 @@ copPic.onload = function(){
 copPicLoaded = true;
 };
 copPic.src = "file:///Users/Shebby/Downloads/copp.png"
+
+
+
+
+
+
+
 
 // Tree[0]
 var treePic = document.createElement("img");

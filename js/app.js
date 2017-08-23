@@ -24,6 +24,7 @@ window.onload = function() {
     }
   }
   // KEY UP
+
   document.addEventListener('keyup',keyUpListener,false);
   function keyUpListener(e){
     switch (e.keyCode){
@@ -43,7 +44,7 @@ window.onload = function() {
 
   // Play Intro for 13 seconds and then cut to black and start game
   var intro = setInterval(callBoth, 1000/framesPerSecond);
-  var thirteenSecs = setTimeout(function( ) { clearInterval( intro ); }, 13000);
+  setTimeout(function( ) { clearInterval( intro ); }, 13000);
   setTimeout(function(){
     colorRect(0,0,canvas.width,canvas.height, 'black');
     carX = 200; carY = 230;
@@ -144,7 +145,7 @@ function moveIntro() {
     }
   };
 
-// ACTUAL GAMEPLAY!!!
+// ACTUAL GAME!!!
 // Draw Actual Game
 function drawGame() {
   // black screen
@@ -154,48 +155,112 @@ function drawGame() {
   //Bottom Grass
   colorRect(0,410,canvas.width,190, '#94c840');
   //Traffic lines
-  for (var i = 0; i < 1000; i++){
+  for (var i = 0; i < lanesX.length; i++){
    for (var y = 130; y <= 370; y+=80){
-    lanesX.push(i * 50);
     colorRect(lanesX[i], y, 30,5, 'white');
+}
     lanesX[i] = lanesX[i] + laneSpeedX;
+  }
+  if(lanesX.includes(-50)){
+    lanesX.splice(0,1);
+    lanesX.push(800);
+  }
+// Push tree into treesX array every 100
+for (var t = 0; t < treesX.length; t++){
+  // randomTrees is an array of random index numbers
+  new Image(treePicLoaded, trees[randomTrees[t]], treesX[t], 10);
+  new Image(treePicLoaded, trees[randomTrees[t]], treesX[t], 430);
+  // This makes trees move left
+    treesX[t] = treesX[t] + treeSpeedX;
 }
+// If any tree in array treesX includes -100
+if(treesX.includes(-100)){
+  // Take out that tree
+  treesX.splice(treesX.indexOf(-100),1);
+  // Push in another tree at 800
+  treesX.push(800);
+  // Generate random # that will be used to randomize tree type
+  var randomTreeNumber = Math.floor(Math.random()*trees.length);
+  randomTrees.splice(0,1);
+  // Push random number into array.
+  randomTrees.push(randomTreeNumber)
 }
+
+
+// First Traffic Lane
+  var lane1Y = 150;
+  new Image(trafficCarPicLoaded, cars[randomCar[0]], trafficLane1[0], lane1Y);
+    // This makes cars move left
+  trafficLane1[0] = trafficLane1[0] + trafficSpeedX;
+  // If changing speed of cars, be aware of divisibility of number inside includes
+  if(trafficLane1.includes(-200)){
+    trafficLane1.splice(trafficLane1.indexOf(-200),1);
+    trafficLane1.push(1000);
+    var randomCarNumber1 = Math.floor(Math.random()*cars.length);
+    randomCar.splice(0,1);
+    randomCar.push(randomCarNumber1)
+}
+
+// Second Traffic Lane
+var lane2Y = 220;
+new Image(trafficCarPicLoaded, cars[randomCar2[0]], trafficLane2[0], lane2Y);
+  // This makes cars move left
+trafficLane2[0] = trafficLane2[0] + trafficSpeedX;
+  // If changing speed of cars, be aware of divisibility of number inside includes
+if(trafficLane2.includes(-200)){
+  trafficLane2.splice(trafficLane2.indexOf(-200),1);
+  trafficLane2.push(1000);
+  var randomCarNumber2 = Math.floor(Math.random()*cars.length);
+  randomCar2.splice(0,1);
+  randomCar2.push(randomCarNumber2)
+}
+
+var lane3Y = 310;
+new Image(trafficCarPicLoaded, cars[randomCar3[0]], trafficLane3[0], lane3Y);
+  // This makes cars move left
+trafficLane3[0] = trafficLane3[0] + trafficSpeedX;
+  // If changing speed of cars, be aware of divisibility of number inside includes
+if(trafficLane3.includes(-200)){
+  trafficLane3.splice(trafficLane3.indexOf(-200),1);
+  trafficLane3.push(1000);
+  var randomCarNumber3 = Math.floor(Math.random()*cars.length);
+  randomCar3.splice(0,1);
+  randomCar3.push(randomCarNumber3)
+}
+
+
+
+// for (var t = 0; t <= 0; t++){
+//   var lane2Y = 220;
+//   new Image(trafficCarPicLoaded, trafficCarPic, trafficLane2[0], lane2Y);
+//       trafficLane2[0] = trafficLane2[0] + trafficSpeedX;
+//       if(trafficLane2.includes(-100)){
+//         trafficLane2.splice(trafficLane2.indexOf(-100),1);
+//         trafficLane2.push(1200);
+//       }
+// }
+
+// for (var t = 0; t <= 0; t++){
+//   var lane3Y = 310;
+//   new Image(trafficCarPicLoaded, trafficCarPic, trafficLane3[0], lane3Y);
+//       trafficLane3[0] = trafficLane3[0] + trafficSpeedX;
+//       if(trafficLane3.includes(-100)){
+//         trafficLane3.splice(trafficLane3.indexOf(-100),1);
+//         trafficLane3.push(1000);
+//       }
+// }
+
+
 // }
   // MAIN CAR
-
   new Image(carPicLoaded, carPic, carX, carY);
-
-  canvasContext.fillStyle = 'blue'
-  canvasContext.fillRect(carX + 120, carY, 3, 61)
+  // canvasContext.fillStyle = 'blue'
+  // canvasContext.fillRect(carX + 120, carY, 3, 61)
   //TREES
 
 //Figure out how to make trees random
-for (var t = 0; t <= 1000; t++){
-  treesX.push(t*100);
-  new Image(treePicLoaded, treePic, treesX[t], 10);
-  new Image(treePicLoaded, treePic, treesX[t], 430);
-    treesX[t] = treesX[t] + treeSpeedX;
-}
-for (var t = 0; t <= 1000; t++){
-  trafficLane1.push(t*1000);
-  var lane1Y = 150;
-  new Image(trafficCarPicLoaded, trafficCarPic, trafficLane1[t], lane1Y);
-      trafficLane1[t] = trafficLane1[t] + trafficSpeedX;
-  // trafficLane2.push(t*800);
-  // new Image(trafficCarPicLoaded, trafficCarPic, trafficLane2[t], 310);
-  trafficLane3.push(t*600);
-  var lane3Y = 310;
-  new Image(trafficCarPicLoaded, trafficCarPic, trafficLane3[t], lane3Y);
-    trafficLane3[t] = trafficLane3[t] + trafficSpeedX;
-
-    // console.log("lane1X is: "+ trafficLane1[t]);
-    // console.log("lane3X is: "+ trafficLane3[t]);
-}
-    // console.log("Car X is: "+ carX );
-
 var trafficCarXAdjustment = 120;
-console.log(carY, lane3Y);
+// console.log(carY, lane3Y);
 
   if(carY <= lane1Y + 35 && carY > lane1Y -55
     // Check if lane array contains x value of 200
@@ -203,32 +268,21 @@ console.log(carY, lane3Y);
     alert(' HIITTTTTTTT');
 };
 
-if(carY <= lane3Y + 40 && carY > lane3Y -55
-  // Check if lane array contains x value of 200
-&&$.inArray((carX + trafficCarXAdjustment), trafficLane3) > -1){
-  alert(' HIITTTTTTTT');
-}
-if(carY <= lane1Y -55){
-  // console.log(' missed  lane 1 top ');
-};
-if(carY <= lane3Y - 55){
-  // console.log(' missed  lane 3 top ');
-};
 
-
+// WHEN CAR HITS TRAFFIC CARS
+// if(carY <= lane3Y + 40 && carY > lane3Y -55
+//   // Check if lane array contains x value of 200
+// &&$.inArray((carX + trafficCarXAdjustment), trafficLane3) > -1){
+//   alert(' HIITTTTTTTT');
+// }
+// if(carY <= lane1Y -55){
+//   // console.log(' missed  lane 1 top ');
+// };
+// if(carY <= lane3Y - 55){
+//   // console.log(' missed  lane 3 top ');
+// };
 }
+
 //Move Actual Game
 function moveGame() {
-
-
 }
-
-
-
-
-// function keyPressed(evt){
-//   console.log("Key Pressed: "evt.keyCode);
-// }
-// function keyReleased(evt){
-//   console.log("Key Released: "evt.keyCode);
-// }
