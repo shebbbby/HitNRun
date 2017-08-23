@@ -19,7 +19,7 @@ function callBothGame(){
 }
 
 // This will allow for the game to move smoothly at 30 fps
-var framesPerSecond = 60;
+var framesPerSecond = 30;
 
 // This represents the intro as a movie
 // var intro = setInterval(callBoth, 1000/framesPerSecond);
@@ -28,13 +28,14 @@ var framesPerSecond = 60;
 var stopX = 0;
 var stopY = 0;
 
+// Background objects that are supposed to be still in real world
+backgroundSpeed = -5;
+
 // Tree Variables
 var treeX = 100;
-var treeSpeedX = -5;
 var treesX = [0, 100, 200, 300, 400, 500, 600, 700, 800];
 var randomTrees = [0, 1, 0, 1, 1, 2, 0, 1, 0]; // This matches top array to make trees random
 var trees = [treePic, treePic1, treePic2];
-
 
 // Traffic Variables
 
@@ -49,11 +50,10 @@ var trafficLane3 = [500];
 var randomCar3 = [0];
 
 
-var cars = [trafficCarPic, trafficCarPic1, trafficCarPic2, trafficCarPic3, trafficCarPic4, trafficCarPic5, trafficCarPic6];
+var cars = [trafficCarPic, trafficCarPic1, trafficCarPic2, trafficCarPic3, trafficCarPic4, trafficCarPic5, trafficCarPic6, trafficCarPic7, trafficCarPic8];
 
 
 // Lane Variables
-var laneSpeedX = -5;
 var lanesX = [];
 for(var i = 0; i <= 800; i+=50){
   lanesX.push(i);

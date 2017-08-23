@@ -7,7 +7,24 @@ var carPicLoaded = false;
 carPic.onload = function(){
   carPicLoaded = true;
 }
-carPic.src = "file:///Users/Shebby/Downloads/imageedit_2_9765637766.png"
+
+
+
+// Red Main Car
+carPic.src ="file:///Users/Shebby/Downloads/imageedit_1_2501482162.png";
+//Purple: "file:///Users/Shebby/Downloads/imageedit_1_4298488080.png";
+//Light Purple: "file:///Users/Shebby/Downloads/imageedit_1_4029028594.png";
+//Green: "file:///Users/Shebby/Downloads/imageedit_1_7095627695.png";
+//Yellow: "file:///Users/Shebby/Downloads/imageedit_1_9122036263.png";
+//Orange: "file:///Users/Shebby/Downloads/imageedit_1_2621731013.png";
+// Light Blue: "file:///Users/Shebby/Downloads/imageedit_1_6748712237.png";
+//Blue: "file:///Users/Shebby/Downloads/imageedit_1_9093593321.png";
+//Dark Blue: "file:///Users/Shebby/Downloads/imageedit_1_6201823621.png";
+// Gray: "file:///Users/Shebby/Downloads/imageedit_1_2909112006.png";
+// White: "file:///Users/Shebby/Downloads/imageedit_1_8680182352.png"
+// ALL SIZED 132 by 60
+
+
 
 // Grandma
 var grandmaPic = document.createElement("img");
@@ -70,6 +87,22 @@ trafficCarPic6.onload = function(){
 trafficCarPicLoaded6 = true;
 };
 trafficCarPic6.src = "file:///Users/Shebby/Downloads/imageedit_3_8064753901.png"
+
+var trafficCarPic7 = document.createElement("img");
+var trafficCarPicLoaded7 = false;
+trafficCarPic7.onload = function(){
+trafficCarPicLoaded7 = true;
+};
+trafficCarPic7.src = "file:///Users/Shebby/Downloads/imageedit_6_2736901480.png"
+
+var trafficCarPic8 = document.createElement("img");
+var trafficCarPicLoaded8 = false;
+trafficCarPic8.onload = function(){
+trafficCarPicLoaded8 = true;
+};
+trafficCarPic8.src = "file:///Users/Shebby/Downloads/imageedit_11_4286847013.png"
+
+
 
 
 
