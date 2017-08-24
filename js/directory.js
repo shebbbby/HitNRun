@@ -54,7 +54,7 @@ var trafficLane3 = [500];
 var randomCar3 = [0];
 
 
-var cars = [trafficCarPic, trafficCarPic1, trafficCarPic2, trafficCarPic3, trafficCarPic4, trafficCarPic5, trafficCarPic6, trafficCarPic7, trafficCarPic8];
+var cars = [trafficCarPic, trafficCarPic1, trafficCarPic2, trafficCarPic3, trafficCarPic4, trafficCarPic5, trafficCarPic6];
 
 var carSpaceMultiple = 200;
 // Lane Variables
