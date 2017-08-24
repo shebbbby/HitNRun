@@ -29,7 +29,11 @@ var stopX = 0;
 var stopY = 0;
 
 // Background objects that are supposed to be still in real world
-backgroundSpeed = -5;
+backgroundSpeed = -10;
+
+// People Variables
+var tre
+
 
 // Tree Variables
 var treeX = 100;
@@ -39,7 +43,7 @@ var trees = [treePic, treePic1, treePic2];
 
 // Traffic Variables
 
-var trafficSpeedX = -2;
+var trafficSpeedX = -5;
 var trafficLane1 = [700];
 var randomCar = [0];
 
@@ -52,12 +56,18 @@ var randomCar3 = [0];
 
 var cars = [trafficCarPic, trafficCarPic1, trafficCarPic2, trafficCarPic3, trafficCarPic4, trafficCarPic5, trafficCarPic6, trafficCarPic7, trafficCarPic8];
 
-
+var carSpaceMultiple = 200;
 // Lane Variables
 var lanesX = [];
 for(var i = 0; i <= 800; i+=50){
   lanesX.push(i);
 }
+
+// Crosswalk array regeneration
+var crossX = [420];
+var crossWalkDistance = 1600;
+
+
 
 
 
@@ -75,6 +85,11 @@ var grandmaY = 100;
 var grandmaSpeedY = 1;
 var grandmaSpeedX;
 var grandmaAdjustment = 27; // This adjustment allows grandma to get hit
+
+// Grandma array regeneration
+var grandmaArrayX = [crossX[0]+30];
+var grandmaArrayY = [220];
+var grandmaDistance = crossWalkDistance;
 
 //Cop Variables
 var copSpeedX = 4.50;

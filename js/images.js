@@ -34,6 +34,49 @@ grandmaPic.onload = function(){
 }
 grandmaPic.src = "file:///Users/Shebby/Downloads/grandmaa.png"
 
+
+// Cartman
+
+var cartmanPic = document.createElement("img");
+var cartmanPicLoaded = false;
+cartmanPic.onload = function(){
+  cartmanPicLoaded = true;
+}
+cartmanPic.src = "file:///Users/Shebby/Downloads/imageedit_3_4628274213.png"
+
+var cartmanSumoPic = document.createElement("img");
+var cartmanSumoPicLoaded = false;
+cartmanSumoPic.onload = function(){
+  cartmanSumoPicLoaded = true;
+}
+cartmanSumoPic.src = "file:///Users/Shebby/Downloads/imageedit_1_2242652580.gif"
+
+var cartmanRetardPic = document.createElement("img");
+var cartmanRetardPicLoaded = false;
+cartmanRetardPic.onload = function(){
+  cartmanRetardPicLoaded = true;
+}
+cartmanRetardPic.src = "file:///Users/Shebby/Downloads/imageedit_2_5224260810.png"
+
+var rickPic = document.createElement("img");
+var rickPicLoaded = false;
+rickPic.onload = function(){
+  rickPicLoaded = true;
+}
+rickPic.src = "file:///Users/Shebby/Downloads/imageedit_2_2338304471.png"
+
+var mortyPic = document.createElement("img");
+var mortyPicLoaded = false;
+mortyPic.onload = function(){
+  mortyPicLoaded = true;
+}
+mortyPic.src = "file:///Users/Shebby/Downloads/imageedit_9_9120951898.png"
+
+
+
+var people = ["file:///Users/Shebby/Downloads/grandmaa.png", "file:///Users/Shebby/Downloads/imageedit_3_4628274213.png", "file:///Users/Shebby/Downloads/imageedit_1_2242652580.gif",
+"file:///Users/Shebby/Downloads/imageedit_2_2338304471.png", "file:///Users/Shebby/Downloads/imageedit_9_9120951898.png"];
+
 // Purple Traffic Car
 var trafficCarPic = document.createElement("img");
 var trafficCarPicLoaded= false;
