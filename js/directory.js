@@ -4,9 +4,11 @@ var canvasContext;
 
 
 // To play: e.x honking.play();
-var honking = new Audio("./sounds/honking.mp3"); 
+var honking = new Audio("./sounds/honking.mp3");
 var policeSiren = new Audio("./sounds/policeSiren.mp3");
-
+var splat = new Audio("./sounds/splatNoise.mp3");
+var crash = new Audio("./sounds/carCrash.mp3");
+var siren = new Audio("./sounds/siren2.mp3");
 // Move Intro and Draw Intro
 function callBoth() {
 
@@ -67,7 +69,7 @@ var cars = [trafficCarPic, trafficCarPic1, trafficCarPic2, trafficCarPic3, traff
 var carSpaceMultiple = 200;
 // Lane Variables
 var lanesX = [];
-for(var i = 0; i <= 800; i+=50){
+for(var i = 0; i <= 800; i+=100){
   lanesX.push(i);
 }
 
@@ -89,9 +91,14 @@ var carSpeedX = 20;
 var splatterDistance = 140;
 
 var points = 0;
+var endScore = 0;
+var highScore = 0;
 
 function pointsUp(){
   points++;
+}
+function pointsStatic(){
+  points = points + 0;
 }
 
 //Grandma Variables

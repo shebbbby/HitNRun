@@ -9,6 +9,10 @@ window.onload = function() {
 canvas.addEventListener('click',optionsMenu,false);
 
 function optionsMenu(e){
+  var twoHonks = setInterval(function(){honking.play();},0);
+  setTimeout(setTimeout(function(){ splat.play();
+  clearInterval( twoHonks )}, 6000));
+  setTimeout(setTimeout(function(){ policeSiren.play(); }, 7000));
   // First play the intro scene
   var intro = setInterval(callBoth, 1000/framesPerSecond);
   // Then play actual game
@@ -16,7 +20,7 @@ function optionsMenu(e){
   // Make points go up through time
   setInterval(pointsUp, 3000);
   //Make movement speed up
-  // setInterval(speedUp, 10000);
+  setInterval(speedUp, 10000);
   setTimeout(function( ) { clearInterval( intro );
     // Play Intro for 13 seconds and then cut to black and start game
       // setInterval(callBothGame, 1000/framesPerSecond);
@@ -195,13 +199,13 @@ function drawGame() {
   colorRect(0, 370, 800,5, 'white');
   for (var i = 0; i < lanesX.length; i++){
    for (var y = 210; y <= 290; y+=80){
-    colorRect(lanesX[i], y, 30,5, 'white');
+    colorRect(lanesX[i], y, 50,5, 'white');
 }
     lanesX[i] = lanesX[i] + backgroundSpeed;
   }
-  if(lanesX[0] <= -50){
+  if(lanesX[0] <= -100){
     lanesX.splice(0,1);
-    lanesX.push(800);
+    lanesX.push(lanesX[7] + 100);
   }
 // Push tree into treesX array every 100
 for (var t = 0; t < treesX.length; t++){
@@ -216,7 +220,7 @@ if(treesX[0] <= -100){
   // Take out that tree
   treesX.splice(treesX[0],1);
   // Push in another tree at 800
-  treesX.push(800);
+  treesX.push(treesX[7] + 100);
   // Generate random # that will be used to randomize tree type
   var randomTreeNumber = Math.floor(Math.random()*trees.length);
   randomTrees.splice(0,1);
@@ -235,7 +239,16 @@ if(crossX[0] <= -200){
  crossX.push(crossWalkDistance);
 }
 
-console.log(carY);
+// Cop in game
+// var copX = 50;
+// var copY = 220;
+// var copSpeedX = 5;
+// new Image(copPicLoaded, copPic, copY, copX);
+//
+// function arrest(){
+// copX = copX + copSpeedX;
+// }
+// arrest();
 
 // Grandma in middle of crosswalk
 grandmaX = grandmaArrayX[0];
@@ -260,6 +273,7 @@ grandmaY = grandmaArrayY[0];
           grandmaArrayX[0] = crossX[0]+ splatterDistance/2;
           points += 0.3;
           grandmaPic.src = "./Images/blood.png"
+          splat.play();
           // console.log("splat");
         }
 
@@ -303,6 +317,7 @@ grandmaY = grandmaArrayY[0];
         //         }
 
 
+
 // First Traffic Lane
   var lane1Y = 140;
   new Image(trafficCarPicLoaded, cars[randomCar[0]], trafficLane1[0], lane1Y);
@@ -317,6 +332,7 @@ grandmaY = grandmaArrayY[0];
     var randomCarNumber1 = Math.floor(Math.random()*cars.length);
     randomCar.splice(0,1);
     randomCar.push(randomCarNumber1)
+    console.log('lane 1: '+trafficLane1[0]);
 }
 
 // Second Traffic Lane
@@ -333,6 +349,8 @@ trafficLane2[0] = trafficLane2[0] + trafficSpeedX;
   var randomCarNumber2 = Math.floor(Math.random()*cars.length);
   randomCar2.splice(0,1);
   randomCar2.push(randomCarNumber2)
+  console.log('lane 2: '+trafficLane2[0]);
+
 }
 
 // Third Traffic Lane
@@ -349,8 +367,29 @@ if(trafficLane3[0] <= -200){
   var randomCarNumber3 = Math.floor(Math.random()*cars.length);
   randomCar3.splice(0,1);
   randomCar3.push(randomCarNumber3)
+  console.log('lane 3: '+trafficLane3[0]);
 }
-
+if(trafficLane1[0] === trafficLane2[0] && trafficLane1[0] === trafficLane3[0]){
+  trafficLane1[0]+= 300;
+}
+if(trafficLane1[0] === trafficLane2[0] -100 && trafficLane1[0] === trafficLane3[0]-100){
+  trafficLane3[0]+= 300;
+}
+if(trafficLane1[0] - 100 === trafficLane2[0] && trafficLane1[0] -100 === trafficLane3[0]){
+  trafficLane2[0]+= 300;
+}
+if(trafficLane1[0] - 100 === trafficLane2[0] && trafficLane2[0] -100 === trafficLane3[0]){
+  trafficLane1[0]+= 300;
+}
+if(trafficLane3[0] - 100 === trafficLane2[0] && trafficLane2[0] -100 === trafficLane1[0]){
+  trafficLane3[0]+= 300;
+}
+if(trafficLane1[0] - 100 === trafficLane2[0] && trafficLane3[0] -100 === trafficLane2[0]){
+  trafficLane3[0]+= 300;
+}
+if(trafficLane1[0] + 100 === trafficLane2[0] && trafficLane3[0] + 100 === trafficLane2[0]){
+  trafficLane2[0]+= 300;
+}
 
 // }
   // MAIN CAR
@@ -364,34 +403,107 @@ var trafficCarXAdjustment = 120;
   if(carY <= lane1Y + 35 && carY > lane1Y -55
     // Check if lane array contains x value of 200
   &&$.inArray((carX + trafficCarXAdjustment), trafficLane1) > -1){
-    console.log(' HIITTTTTTTT');
+    var endScore = Math.ceil(points);
+    if(endScore > highScore){
+
+    }
+    trafficSpeedX = 0;
+    backgroundSpeed = 0;
+    crash.play();
+    clearInterval(speedUp);
+    clearInterval(pointsUp);
+    // colorRect(0,0,canvas.width,canvas.height, 'black');
+    console.log(endScore);
 };
 
 //Hitting side of lane1
 if(carX + 120 >= trafficLane1[0] && carX -120 <= trafficLane1[0] && carY <= lane1Y && carY + 60 >= lane1Y){
-  // alert(' HIITTTTTTTT');
+  var endScore = Math.ceil(points);
+  if(endScore > highScore){
+    highScore = Math.ceil;
+
+  }
+  // carY = carY + 40;
+  trafficSpeedX = 0;
+  backgroundSpeed = 0;
+  crash.play();
+  clearInterval(speedUp);
+  clearInterval(pointsUp);
+  // colorRect(0,0,canvas.width,canvas.height, 'black');
+  console.log(endScore);
+
 }
 
 // Hitting back of lane2
 if(carY <= lane2Y + 35 && carY > lane2Y -55
   // Check if lane array contains x value of 200
 &&$.inArray((carX + trafficCarXAdjustment), trafficLane2) > -1){
-  console.log(' HIITTTTTTTT');
+  var endScore = Math.ceil(points);
+  if(endScore > highScore){
+    highScore = Math.ceil;
+      // clearInterval(speedUp);
+
+  }
+  trafficSpeedX = 0;
+  backgroundSpeed = 0;
+  crash.play();
+  clearInterval(speedUp);
+  clearInterval(pointsUp);
+  // colorRect(0,0,canvas.width,canvas.height, 'black');
+  console.log(endScore);
+
 }
 // Hitting side of lane2
 if(carX + 120 >= trafficLane2[0] && carX -120 <= trafficLane2[0] && carY <= lane2Y && carY + 60 >= lane2Y){
-  // alert(' HIITTTTTTTT');
+  var endScore = Math.ceil(points);
+  if(endScore > highScore){
+    highScore = Math.ceil;
+      // clearInterval(speedUp);
+
+  }
+  trafficSpeedX = 0;
+  backgroundSpeed = 0;
+  crash.play();
+  clearInterval(speedUp);
+  clearInterval(pointsUp);
+  // colorRect(0,0,canvas.width,canvas.height, 'black');
+  console.log(endScore);
 }
 
 // Hitting back of lane3
 if(carY <= lane3Y + 35 && carY > lane3Y -55
   // Check if lane array contains x value of 200
 &&$.inArray((carX + trafficCarXAdjustment), trafficLane3) > -1){
-  console.log(' HIITTTTTTTT');
+  var endScore = Math.ceil(points);
+  if(endScore > highScore){
+    highScore = Math.ceil;
+    // clearInterval(speedUp);
+
+  }
+  trafficSpeedX = 0;
+  backgroundSpeed = 0;
+  crash.play();
+  clearInterval(speedUp);
+  clearInterval(pointsUp);
+  // colorRect(0,0,canvas.width,canvas.height, 'black');
+  console.log(endScore);
 }
 // Hitting side of lane3
 if(carX + 120 >= trafficLane3[0] && carX -120 <= trafficLane3[0] && carY <= lane3Y && carY + 60 >= lane3Y){
-  // alert(' HIITTTTTTTT');
+  var endScore = Math.ceil(points);
+  if(endScore > highScore){
+    highScore = Math.ceil;
+    // clearInterval(speedUp);
+
+  }
+  // carY = carY - 40;
+  trafficSpeedX = 0;
+  backgroundSpeed = 0;
+  crash.play();
+  clearInterval(speedUp);
+  clearInterval(pointsUp);
+  // colorRect(0,0,canvas.width,canvas.height, 'black');
+  console.log(endScore);
 }
 
 
