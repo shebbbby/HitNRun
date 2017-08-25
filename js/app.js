@@ -3,20 +3,38 @@ window.onload = function() {
   // Select "gameCanvas" from html element
   canvas = document.getElementById('gameCanvas');
   canvasContext = canvas.getContext('2d');
-  // var options = setInterval(drawOptionMenu, 1000/framesPerSecond);
+  var options = setInterval(drawOptionMenu, 1000/framesPerSecond);
 
-// After selecting car, play intro (Just added)
-// document.addEventListener('click',optionsMenu,false);
-// function optionsMenu(e){
-//   var intro = setInterval(callBoth, 1000/framesPerSecond);
-//   setTimeout(function( ) { clearInterval( intro ); }, 13000);
-//   clearInterval( options );
-// }
+//After selecting car, play intro (Just added)
+canvas.addEventListener('click',optionsMenu,false);
+
+function optionsMenu(e){
+  // First play the intro scene
+  var intro = setInterval(callBoth, 1000/framesPerSecond);
+  // Then play actual game
+  setInterval(callBothGame, 1000/framesPerSecond);
+  // Make points go up through time
+  setInterval(pointsUp, 3000);
+  //Make movement speed up
+  // setInterval(speedUp, 10000);
+  setTimeout(function( ) { clearInterval( intro );
+    // Play Intro for 13 seconds and then cut to black and start game
+      // setInterval(callBothGame, 1000/framesPerSecond);
+      points = 0;
+      var randomPersonNumber = Math.floor(Math.random()*people.length);
+      grandmaPic.src = people[randomPersonNumber];
+      carX = 200; carY = 220;
+    // Draw Game after intro (15 seconds)
+    // setTimeout(callBothGame,16000);
+    // setInterval(callBothGame, 1000/framesPerSecond);
+  }, 13000);
+  clearInterval( options );
+}
 
 //WHAT YOU HAD BEFORE
   // var options = setInterval(drawOptionMenu, 1000/framesPerSecond);
-  var intro = setInterval(callBoth, 1000/framesPerSecond);
-  setTimeout(function( ) { clearInterval( intro ); }, 13000);
+  // var intro = setInterval(callBoth, 1000/framesPerSecond);
+  // setTimeout(function( ) { clearInterval( intro ); }, 13000);
 
 
   // KEY DOWN
@@ -44,29 +62,35 @@ window.onload = function() {
       break;
     }
   }
-  // Play Intro for 13 seconds and then cut to black and start game
-  setTimeout(function(){
-    colorRect(0,0,canvas.width,canvas.height, 'black');
-    var randomPersonNumber = Math.floor(Math.random()*people.length);
-    grandmaPic.src = people[randomPersonNumber];
-    carX = 200; carY = 220;
-  },15000);
-  // Draw Game after intro (15 seconds)
-  // setTimeout(callBothGame,16000);
-  setInterval(callBothGame, 1000/framesPerSecond);
+
 
 }
 
 function drawOptionMenu() {
   // black screen
   colorRect(0,0,canvas.width,canvas.height, 'black');
-  new Image(carPicLoaded, carPic, 50, 200);
-  new Image(purpleCarPicLoaded, purpleMainCarPic, 250, 200);
-  new Image(lightPurpleCarPicLoaded, lightPurpleMainCarPic, 450, 200);
-  new Image(lightBlueCarPicLoaded, lightBlueCarPicLoaded, 650, 200);
-  new Image(darkBlueCarPicLoaded, darkBlueMainCarPic, 50, 300);
-  new Image(grayCarPicLoaded, grayMainCarPic, 250, 300);
-  new Image(whiteMainCarPicLoaded, whiteMainCarPic, 450, 300);
+  canvasContext.font = 'bold 10pt Calibri';
+  canvasContext.fillText('Please Select Your Vehicle!', 150, 100);
+  canvasContext.font = 'italic 40pt Times Roman';
+  canvasContext.fillStyle = 'white';
+  canvasContext.fillText('Please Select Your Vehicle!', 120, 150);
+  canvasContext.font = '60pt Calibri';
+  canvasContext.lineWidth = 4;
+  canvasContext.strokeStyle = 'white';
+  new Image(carPicLoaded, carPic, 60, 200);
+  new Image(purpleCarPicLoaded, purpleMainCarPic, 240, 200);
+  new Image(lightPurpleCarPicLoaded, lightPurpleMainCarPic, 420, 200);
+  new Image(blueCarPicLoaded, blueMainCarPic, 600, 200);
+  new Image(darkBlueCarPicLoaded, darkBlueCarPic, 60, 300);
+  new Image(grayCarPicLoaded, grayMainCarPic, 240, 300);
+  new Image(whiteMainCarPicLoaded, whiteMainCarPic, 420, 300);
+  new Image(yellowMainCarPicLoaded, yellowMainCarPic, 600, 300);
+  new Image(greenMainCarPicLoaded, greenMainCarPic, 60, 400);
+  new Image(darkGreenMainCarPicLoaded, darkGreenMainCarPic, 240, 400);
+  new Image(lightGreenMainCarPicLoaded, lightGreenMainCarPic, 420, 400);
+  new Image(lightPinkMainCarPicLoaded, lightPinkMainCarPic, 600, 400);
+
+
 }
 
 // INTRO MOVIE SCENE
@@ -175,7 +199,7 @@ function drawGame() {
 }
     lanesX[i] = lanesX[i] + backgroundSpeed;
   }
-  if(lanesX.includes(-50)){
+  if(lanesX[0] <= -50){
     lanesX.splice(0,1);
     lanesX.push(800);
   }
@@ -188,9 +212,9 @@ for (var t = 0; t < treesX.length; t++){
     treesX[t] = treesX[t] + backgroundSpeed;
 }
 // If any tree in array treesX includes -100
-if(treesX.includes(-100)){
+if(treesX[0] <= -100){
   // Take out that tree
-  treesX.splice(treesX.indexOf(-100),1);
+  treesX.splice(treesX[0],1);
   // Push in another tree at 800
   treesX.push(800);
   // Generate random # that will be used to randomize tree type
@@ -206,7 +230,7 @@ colorRect(crossX[0], i, 80,20, 'white');
 }
 crossX[0] = crossX[0] + backgroundSpeed;
  // Middle of Crosswalk vertically
-if(crossX.includes(-200)){
+if(crossX[0] <= -200){
  crossX.splice(0,1);
  crossX.push(crossWalkDistance);
 }
@@ -234,17 +258,17 @@ grandmaY = grandmaArrayY[0];
     if(carY <= grandmaY && carY + 60 >= grandmaY && carX+132 >= grandmaX && carX <= grandmaX){
           //grandma gets hit, splattered
           grandmaArrayX[0] = crossX[0]+ splatterDistance/2;
+          points += 0.3;
           grandmaPic.src = "./Images/blood.png"
           // console.log("splat");
         }
 
-        if(grandmaArrayX.includes(-200)){
+        if(grandmaArrayX[0] <= -200){
           grandmaArrayX.splice(0,1);
           grandmaArrayX.push(crossX[0] + 30);
           var randomPersonNumber = Math.floor(Math.random()*people.length);
           grandmaArrayY.splice(0,1);
           grandmaPic.src = people[randomPersonNumber];
-          console.log(grandmaPic.src);
         }
 
         // FIGURE OUT HOW TO MAKE THIS WORK WITH MOVEMENT AND HITTING THEM. GOT SO CLOSE
@@ -285,8 +309,8 @@ grandmaY = grandmaArrayY[0];
     // This makes cars move left
   trafficLane1[0] = trafficLane1[0] + trafficSpeedX;
   // If changing speed of cars, be aware of divisibility of number inside includes
-  if(trafficLane1.includes(-200)){
-    trafficLane1.splice(trafficLane1.indexOf(-200),1);
+  if(trafficLane1[0] <= -200){
+    trafficLane1.splice(trafficLane1[0],1);
     var randomDistance = 4 + Math.floor(Math.random()*4);
     //Generate cars at a random distance between 800-1500. (Divisible by 100)
     trafficLane1.push(randomDistance * carSpaceMultiple);
@@ -301,8 +325,8 @@ new Image(trafficCarPicLoaded, cars[randomCar2[0]], trafficLane2[0], lane2Y);
   // This makes cars move left
 trafficLane2[0] = trafficLane2[0] + trafficSpeedX;
   // If changing speed of cars, be aware of divisibility of number inside includes
-if(trafficLane2.includes(-200)){
-  trafficLane2.splice(trafficLane2.indexOf(-200),1);
+  if(trafficLane2[0] <= -200){
+    trafficLane2.splice(trafficLane2[0],1);
   //Generate cars at a random distance between 800-1500. (Divisible by 100)
   var randomDistance2 = 4 + Math.floor(Math.random()*4);
   trafficLane2.push(randomDistance2 * carSpaceMultiple);
@@ -317,8 +341,8 @@ new Image(trafficCarPicLoaded, cars[randomCar3[0]], trafficLane3[0], lane3Y);
   // This makes cars move left
 trafficLane3[0] = trafficLane3[0] + trafficSpeedX;
   // If changing speed of cars, be aware of divisibility of number inside includes
-if(trafficLane3.includes(-200)){
-  trafficLane3.splice(trafficLane3.indexOf(-200),1);
+if(trafficLane3[0] <= -200){
+  trafficLane3.splice(trafficLane3[0],1);
     //Generate cars at a random distance between 800-1500. (Divisible by 100)
   var randomDistance3 = 4 + Math.floor(Math.random()*4);
   trafficLane3.push(randomDistance3 * carSpaceMultiple);
@@ -369,6 +393,13 @@ if(carY <= lane3Y + 35 && carY > lane3Y -55
 if(carX + 120 >= trafficLane3[0] && carX -120 <= trafficLane3[0] && carY <= lane3Y && carY + 60 >= lane3Y){
   // alert(' HIITTTTTTTT');
 }
+
+
+
+canvasContext.fillText(Math.ceil(points), 420, 90);
+canvasContext.font = '30pt Calibri';
+canvasContext.lineWidth = 4;
+canvasContext.strokeStyle = 'blue';
 
 
 }

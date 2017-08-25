@@ -2,8 +2,14 @@
 var canvas;
 var canvasContext;
 
+
+// To play: e.x honking.play();
+var honking = new Audio("./sounds/honking.mp3"); 
+var policeSiren = new Audio("./sounds/policeSiren.mp3");
+
 // Move Intro and Draw Intro
 function callBoth() {
+
   moveIntro();
   drawIntro();
 }
@@ -31,8 +37,10 @@ var stopY = 0;
 // Background objects that are supposed to be still in real world
 backgroundSpeed = -10;
 
+
+
 // People Variables
-var tre
+
 
 
 // Tree Variables
@@ -68,9 +76,10 @@ var crossX = [420];
 var crossWalkDistance = 1600;
 
 
-
-
-
+function speedUp(){
+  backgroundSpeed --;
+  trafficSpeedX --;
+}
 
 
 // Main Car Variables
@@ -78,6 +87,12 @@ var carX = -3250; //Starts way left in intro
 var carY = 310;
 var carSpeedX = 20;
 var splatterDistance = 140;
+
+var points = 0;
+
+function pointsUp(){
+  points++;
+}
 
 //Grandma Variables
 var grandmaX = 490;

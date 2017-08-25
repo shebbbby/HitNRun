@@ -34,21 +34,26 @@ greenMainCarPic.onload = function(){
 
 greenMainCarPic.src ="./Images/greenMainCar.png";
 
+
+
 var blueMainCarPic = document.createElement("img");
 var blueCarPicLoaded = false;
 blueMainCarPic.onload = function(){
   blueCarPicLoaded = true;
 }
-
 blueMainCarPic.src ="./Images/blueMainCar.png";
+//
 
-var darkBlueMainCarPic = document.createElement("img");
+var darkBlueCarPic = document.createElement("img");
 var darkBlueCarPicLoaded = false;
-darkBlueMainCarPic.onload = function(){
+darkBlueCarPic.onload = function(){
   darkBlueCarPicLoaded = true;
 }
 
-darkBlueMainCarPic.src ="./Images/darkBlueMainCar.png";
+darkBlueCarPic.src ="./Images/darkBlueMainCar.png";
+//
+//
+
 
 var grayMainCarPic = document.createElement("img");
 var grayCarPicLoaded = false;
@@ -57,7 +62,7 @@ grayMainCarPic.onload = function(){
 }
 
 grayMainCarPic.src ="./Images/grayMainCar.png";
-
+//
 var whiteMainCarPic = document.createElement("img");
 var whiteMainCarPicLoaded = false;
 whiteMainCarPic.onload = function(){
@@ -65,6 +70,46 @@ whiteMainCarPic.onload = function(){
 }
 
 whiteMainCarPic.src ="./Images/whiteMainCar.png";
+
+var yellowMainCarPic = document.createElement("img");
+var yellowMainCarPicLoaded = false;
+yellowMainCarPic.onload = function(){
+  yellowMainCarPicLoaded = true;
+}
+
+yellowMainCarPic.src ="./Images/yellowMainCar.png";
+
+var greenMainCarPic = document.createElement("img");
+var greenMainCarPicLoaded = false;
+greenMainCarPic.onload = function(){
+  greenMainCarPicLoaded = true;
+}
+
+greenMainCarPic.src ="./Images/greenMainCar.png";
+
+var lightGreenMainCarPic = document.createElement("img");
+var lightGreenMainCarPicLoaded = false;
+lightGreenMainCarPic.onload = function(){
+  lightGreenMainCarPicLoaded = true;
+}
+
+lightGreenMainCarPic.src ="./Images/lightGreenMainCar.png";
+
+var lightPinkMainCarPic = document.createElement("img");
+var lightPinkMainCarPicLoaded = false;
+lightPinkMainCarPic.onload = function(){
+  lightPinkMainCarPicLoaded = true;
+}
+
+lightPinkMainCarPic.src ="./Images/lightPinkMainCar.png";
+
+var darkGreenMainCarPic = document.createElement("img");
+var darkGreenMainCarPicLoaded = false;
+darkGreenMainCarPic.onload = function(){
+  darkGreenMainCarPicLoaded = true;
+}
+
+darkGreenMainCarPic.src ="./Images/darkGreenMainCar.png";
 
 
 // ALL SIZED 132 by 60
