@@ -11,7 +11,9 @@ canvas.addEventListener('click',optionsMenu,false);
 function optionsMenu(e){
   var twoHonks = setInterval(function(){honking.play();},0);
   setTimeout(setTimeout(function(){ splat.play();
+  // Cars Honking for 6 seconds
   clearInterval( twoHonks )}, 6000));
+  // Police Sirens begin at 7 seconds
   setTimeout(setTimeout(function(){ policeSiren.play(); }, 7000));
   // First play the intro scene
   var intro = setInterval(callBoth, 1000/framesPerSecond);
