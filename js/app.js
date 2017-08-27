@@ -102,56 +102,58 @@ function drawOptionMenu() {
 // This allows you to select car color
   canvas.addEventListener('click', function(e) {
 
-    // calculate x y coordinates on canvas
+    // calculate x y coordinates on canvas. (if you change dimensions, need to adjust these)
     var x = e.pageX - $(this).offset().left,
     y = e.pageY - $(this).offset().top;
     console.log(y, x)
 
     // implement collision detection via the coordinates the element you want to click (assuming you know where it is)
-    if (y > 250 && y < 320
-        && x > 300 && x < 460) {
+    if (y > 200 && y < 260
+        && x > 240 && x < 380) {
         carPic.src ="./Images/purpleMainCar.png";
     }
-    if (y > 260 && y < 320
-        && x > 520 && x < 690) {
+    if (y > 200 && y < 260
+        && x > 420 && x < 560) {
         carPic.src ="./Images/lightPurpleMainCar.png";
     }
-    if (y > 250 && y < 320
-        && x > 740 && x < 905) {
+    if (y > 200 && y < 260
+        && x > 600 && x < 740) {
         carPic.src ="./Images/blueMainCar.png";
     }
-    if (y > 370 && y < 450
-        && x > 70 && x < 250) {
+    if (y > 300 && y < 360
+        && x > 60 && x < 200) {
         carPic.src ="./Images/darkBlueMainCar.png";
     }
-    if (y > 370 && y < 450
-        && x > 300 && x < 470) {
+    if (y > 300 && y < 360
+        && x > 240 && x < 380) {
         carPic.src ="./Images/grayMainCar.png";
     }
-    if (y > 370 && y < 450
-        && x > 520 && x < 690) {
+    if (y > 300 && y < 360
+        && x > 420 && x < 560) {
         carPic.src ="./Images/whiteMainCar.png";
     }
-    if (y > 370 && y < 450
-        && x > 740 && x < 905) {
+    if (y > 300 && y < 360
+        && x > 600 && x < 740) {
         carPic.src ="./Images/yellowMainCar.png";
     }
-    if (y > 490 && y < 570
-        && x > 70 && x < 250) {
+    if (y > 400 && y < 460
+        && x > 60 && x < 200) {
         carPic.src ="./Images/greenMainCar.png";
     }
-    if (y > 490 && y < 570
-        && x > 300 && x < 470) {
+    if (y > 400 && y < 460
+        && x > 240 && x < 380) {
         carPic.src ="./Images/darkGreenMainCar.png";
     }
-    if (y > 490 && y < 570
-        && x > 520 && x < 690) {
+    if (y > 400 && y < 460
+        && x > 420 && x < 560) {
         carPic.src ="./Images/lightGreenMainCar.png";
     }
-    if (y > 490 && y < 570
-        && x > 740 && x < 905) {
+    if (y > 400 && y < 460
+        && x > 600 && x < 740) {
         carPic.src ="./Images/lightPinkMainCar.png";
     }
+
+    // document.querySelector('canvas').setAttribute('style', 'width: 60%;')
 
 });
 }
