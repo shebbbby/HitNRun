@@ -4,5 +4,15 @@ canvas {
     padding-right: 0;
     display: block;
     width: 70%;
-
+}
+img{
+  position: relative;
+  bottom: 400px;
+  left: 300px;
+  display: none;
+}
+.text{
+  display: inline;
+  font-size: 30px;
+  font-weight: bold;
 }

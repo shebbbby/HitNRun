@@ -283,3 +283,14 @@ treePic2.onload = function(){
 treePicLoaded2 = true;
 };
 treePic2.src = "./Images/tree3.png"
+
+
+
+// Play Again Button
+var playAgainPic = document.createElement("img");
+var playAgainPicLoaded = false;
+
+playAgainPic.onload = function(){
+playAgainPicLoaded = true;
+};
+playAgainPic.src = "./Images/playAgain.png"
