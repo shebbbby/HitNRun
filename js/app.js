@@ -47,7 +47,7 @@ function optionsMenu(e){
     switch (e.keyCode){
       case 37:
       if(carY > 150){
-      carY = carY - 80;
+      carY = carY - laneSwitch;
       // carPic.src = "file:///Users/Shebby/Downloads/imageedit_18_3872202865.png"
       }
       if(carY < 150){
@@ -56,7 +56,7 @@ function optionsMenu(e){
       break;
       case 39:
       if(carY < 290){
-      carY = carY + 80;
+      carY = carY + laneSwitch;
       // 80 for lane switching
       // carPic.src = "file:///Users/Shebby/Downloads/rightCar.png"
       }
@@ -326,13 +326,13 @@ grandmaY = grandmaArrayY[0];
   // If changing speed of cars, be aware of divisibility of number inside includes
   if(trafficLane1[0] <= -200){
     trafficLane1.splice(trafficLane1[0],1);
-    var randomDistance = 4 + Math.floor(Math.random()*4);
+    var randomDistance = 4 + Math.floor(Math.random()*5);
     //Generate cars at a random distance between 800-1500. (Divisible by 100)
     trafficLane1.push(randomDistance * carSpaceMultiple);
     var randomCarNumber1 = Math.floor(Math.random()*cars.length);
     randomCar.splice(0,1);
     randomCar.push(randomCarNumber1)
-    console.log('lane 1: '+trafficLane1[0]);
+    // console.log('lane 1: '+trafficLane1[0]);
 }
 
 // Second Traffic Lane
@@ -344,12 +344,12 @@ trafficLane2[0] = trafficLane2[0] + trafficSpeedX;
   if(trafficLane2[0] <= -200){
     trafficLane2.splice(trafficLane2[0],1);
   //Generate cars at a random distance between 800-1500. (Divisible by 100)
-  var randomDistance2 = 4 + Math.floor(Math.random()*4);
+  var randomDistance2 = 4 + Math.floor(Math.random()*5);
   trafficLane2.push(randomDistance2 * carSpaceMultiple);
   var randomCarNumber2 = Math.floor(Math.random()*cars.length);
   randomCar2.splice(0,1);
   randomCar2.push(randomCarNumber2)
-  console.log('lane 2: '+trafficLane2[0]);
+  // console.log('lane 2: '+trafficLane2[0]);
 
 }
 
@@ -362,36 +362,93 @@ trafficLane3[0] = trafficLane3[0] + trafficSpeedX;
 if(trafficLane3[0] <= -200){
   trafficLane3.splice(trafficLane3[0],1);
     //Generate cars at a random distance between 800-1500. (Divisible by 100)
-  var randomDistance3 = 4 + Math.floor(Math.random()*4);
+  var randomDistance3 = 4 + Math.floor(Math.random()*5);
   trafficLane3.push(randomDistance3 * carSpaceMultiple);
   var randomCarNumber3 = Math.floor(Math.random()*cars.length);
   randomCar3.splice(0,1);
   randomCar3.push(randomCarNumber3)
-  console.log('lane 3: '+trafficLane3[0]);
-}
-if(trafficLane1[0] === trafficLane2[0] && trafficLane1[0] === trafficLane3[0]){
-  trafficLane1[0]+= 300;
-}
-if(trafficLane1[0] === trafficLane2[0] -100 && trafficLane1[0] === trafficLane3[0]-100){
-  trafficLane3[0]+= 300;
-}
-if(trafficLane1[0] - 100 === trafficLane2[0] && trafficLane1[0] -100 === trafficLane3[0]){
-  trafficLane2[0]+= 300;
-}
-if(trafficLane1[0] - 100 === trafficLane2[0] && trafficLane2[0] -100 === trafficLane3[0]){
-  trafficLane1[0]+= 300;
-}
-if(trafficLane3[0] - 100 === trafficLane2[0] && trafficLane2[0] -100 === trafficLane1[0]){
-  trafficLane3[0]+= 300;
-}
-if(trafficLane1[0] - 100 === trafficLane2[0] && trafficLane3[0] -100 === trafficLane2[0]){
-  trafficLane3[0]+= 300;
-}
-if(trafficLane1[0] + 100 === trafficLane2[0] && trafficLane3[0] + 100 === trafficLane2[0]){
-  trafficLane2[0]+= 300;
+  // console.log('lane 3: '+trafficLane3[0]);
 }
 
+
+
+// Distance adjustments to make sure there is always space for main car
+if(trafficLane3[0] < trafficLane1[0] && trafficLane3[0] + 100 > trafficLane1[0]){
+  trafficLane1[0] = trafficLane1[0] + 300;
+  console.log('this is one of those!!!!');
+}
+if(trafficLane1[0] < trafficLane3[0] && trafficLane1[0] + 100 > trafficLane3[0]){
+  trafficLane3[0] = trafficLane1[0] + 300;
+  console.log('this is one of those!!!!');
+}
+if(trafficLane2[0] < trafficLane3[0] && trafficLane2[0] + 100 > trafficLane3[0]){
+  trafficLane3[0] = trafficLane2[0] + 300;
+  console.log('this is one of those!!!!');
+}
+if(trafficLane3[0] < trafficLane2[0] && trafficLane3[0] + 100 > trafficLane2[0]){
+  trafficLane2[0] = trafficLane3[0] + 300;
+  console.log('this is one of those!!!!');
+}
+
+if(trafficLane3[0] < trafficLane1[0] && trafficLane3[0] + 250 > trafficLane1[0]){
+  trafficLane1[0] = trafficLane3[0] + 300;
+  console.log('this is one of those!!!!');
+}
+if(trafficLane1[0] < trafficLane3[0] && trafficLane1[0] + 250 > trafficLane3[0]){
+  trafficLane3[0] = trafficLane1[0] + 300;
+  console.log('this is one of those!!!!');
+}
+if(trafficLane2[0] < trafficLane3[0] && trafficLane2[0] + 250 > trafficLane3[0]){
+  trafficLane3[0] = trafficLane2[0] + 300;
+  console.log('this is one of those!!!!');
+}
+if(trafficLane3[0] < trafficLane2[0] && trafficLane3[0] + 250 > trafficLane2[0]){
+  trafficLane2[0] = trafficLane3[0] + 300;
+  console.log('this is one of those!!!!');
+}
+if(trafficLane3[0] === trafficLane2[0]){
+  trafficLane3[0] = trafficLane2[0] + 300;
+  console.log('EQUAL!');
+}
+if(trafficLane3[0] === trafficLane1[0]){
+  trafficLane3[0] = trafficLane1[0] + 300;
+  console.log('EQUAL!');
+}
+if(trafficLane2[0] === trafficLane1[0]){
+  trafficLane2[0] = trafficLane1[0] + 300;
+  console.log('EQUAL!');
+}
+
+
+// if(trafficLane1[0] === trafficLane2[0] && trafficLane1[0] === trafficLane3[0]){
+//   trafficLane2[0] = trafficLane1[0] + 300;
+//   console.log("it worked!!!!!")
 // }
+// if(trafficLane1[0] === trafficLane2[0] -100 && trafficLane1[0] === trafficLane3[0]-100){
+//   trafficLane1[0] = trafficLane2[0] + 300;
+//   console.log("it worked!!!!!")
+// }
+// if(trafficLane1[0] - 100 === trafficLane2[0] && trafficLane1[0] -100 === trafficLane3[0]){
+//   trafficLane3[0] = trafficLane3[0] + 300;
+//   console.log("it worked!!!!!")
+// }
+// if(trafficLane1[0] - 100 === trafficLane2[0] && trafficLane2[0] -100 === trafficLane3[0]){
+//   trafficLane1[0] = trafficLane1[0] + 300;
+//   console.log("it worked!!!!!")
+// }
+// if(trafficLane3[0] - 100 === trafficLane2[0] && trafficLane2[0] -100 === trafficLane1[0]){
+//   trafficLane3[0] = trafficLane3[0] + 300;
+//   console.log("it worked!!!!!")
+// }
+// if(trafficLane1[0] - 100 === trafficLane2[0] && trafficLane3[0] -100 === trafficLane2[0]){
+//   trafficLane1[0] = trafficLane1[0] + 300;
+//   console.log("it worked!!!!!")
+// }
+// if(trafficLane1[0] + 100 === trafficLane2[0] && trafficLane3[0] + 100 === trafficLane2[0]){
+//   trafficLane2[0] = trafficLane2[0] + 300;
+//   console.log("it worked!!!!!")
+// }
+
   // MAIN CAR
   new Image(carPicLoaded, carPic, carX, carY);
   //TREES
@@ -412,12 +469,13 @@ var trafficCarXAdjustment = 120;
     crash.play();
     clearInterval(speedUp);
     clearInterval(pointsUp);
+    laneSwitch = 0;
     // colorRect(0,0,canvas.width,canvas.height, 'black');
-    console.log(endScore);
 };
 
 //Hitting side of lane1
-if(carX + 120 >= trafficLane1[0] && carX -120 <= trafficLane1[0] && carY <= lane1Y && carY + 60 >= lane1Y){
+//For more leeway on side crashes, make carX - (xxx) lower
+if(carX + 120 >= trafficLane1[0] && carX -110 <= trafficLane1[0] && carY <= lane1Y && carY + 60 >= lane1Y){
   var endScore = Math.ceil(points);
   if(endScore > highScore){
     highScore = Math.ceil;
@@ -429,8 +487,9 @@ if(carX + 120 >= trafficLane1[0] && carX -120 <= trafficLane1[0] && carY <= lane
   crash.play();
   clearInterval(speedUp);
   clearInterval(pointsUp);
+  laneSwitch = 0;
   // colorRect(0,0,canvas.width,canvas.height, 'black');
-  console.log(endScore);
+
 
 }
 
@@ -449,12 +508,13 @@ if(carY <= lane2Y + 35 && carY > lane2Y -55
   crash.play();
   clearInterval(speedUp);
   clearInterval(pointsUp);
+  laneSwitch = 0;
   // colorRect(0,0,canvas.width,canvas.height, 'black');
-  console.log(endScore);
+
 
 }
 // Hitting side of lane2
-if(carX + 120 >= trafficLane2[0] && carX -120 <= trafficLane2[0] && carY <= lane2Y && carY + 60 >= lane2Y){
+if(carX + 120 >= trafficLane2[0] && carX -110 <= trafficLane2[0] && carY <= lane2Y && carY + 60 >= lane2Y){
   var endScore = Math.ceil(points);
   if(endScore > highScore){
     highScore = Math.ceil;
@@ -466,8 +526,9 @@ if(carX + 120 >= trafficLane2[0] && carX -120 <= trafficLane2[0] && carY <= lane
   crash.play();
   clearInterval(speedUp);
   clearInterval(pointsUp);
+  laneSwitch = 0;
   // colorRect(0,0,canvas.width,canvas.height, 'black');
-  console.log(endScore);
+
 }
 
 // Hitting back of lane3
@@ -485,11 +546,12 @@ if(carY <= lane3Y + 35 && carY > lane3Y -55
   crash.play();
   clearInterval(speedUp);
   clearInterval(pointsUp);
+  laneSwitch = 0;
   // colorRect(0,0,canvas.width,canvas.height, 'black');
-  console.log(endScore);
+
 }
 // Hitting side of lane3
-if(carX + 120 >= trafficLane3[0] && carX -120 <= trafficLane3[0] && carY <= lane3Y && carY + 60 >= lane3Y){
+if(carX + 120 >= trafficLane3[0] && carX -110 <= trafficLane3[0] && carY <= lane3Y && carY + 60 >= lane3Y){
   var endScore = Math.ceil(points);
   if(endScore > highScore){
     highScore = Math.ceil;
@@ -502,8 +564,9 @@ if(carX + 120 >= trafficLane3[0] && carX -120 <= trafficLane3[0] && carY <= lane
   crash.play();
   clearInterval(speedUp);
   clearInterval(pointsUp);
+  laneSwitch = 0;
   // colorRect(0,0,canvas.width,canvas.height, 'black');
-  console.log(endScore);
+
 }
 
 

@@ -54,14 +54,17 @@ var trees = [treePic, treePic1, treePic2];
 // Traffic Variables
 
 var trafficSpeedX = -5;
-var trafficLane1 = [700];
+var trafficLane1 = [500];
 var randomCar = [0];
 
 var trafficLane2 = [800];
 var randomCar2 = [0];
 
-var trafficLane3 = [500];
+var trafficLane3 = [400];
 var randomCar3 = [0];
+
+
+
 
 
 var cars = [trafficCarPic, trafficCarPic1, trafficCarPic2, trafficCarPic3, trafficCarPic4, trafficCarPic5, trafficCarPic6];
@@ -93,6 +96,8 @@ var splatterDistance = 140;
 var points = 0;
 var endScore = 0;
 var highScore = 0;
+
+var laneSwitch = 80;
 
 function pointsUp(){
   points++;
