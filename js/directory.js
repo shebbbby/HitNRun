@@ -2,9 +2,7 @@
 var canvas;
 var canvasContext;
 
-
-
-// To play: e.x honking.play();
+// SOUNDS To play: e.x honking.play();
 var honking = new Audio("./sounds/honking.mp3");
 var policeSiren = new Audio("./sounds/policeSiren.mp3");
 var splat = new Audio("./sounds/splatNoise.mp3");
@@ -84,9 +82,10 @@ function endGame(){
   }
 }
 
-// For end game, turn to black after 4 seconds
+// For end game, turn to black after 4 seconds, show noop noop and play again button
 function delayedBlackScreen(){setTimeout(function(){
   colorRect(0,0,canvas.width,canvas.height, 'black');
+  // Putting text on score screen
   canvasContext.font = 'bold 10pt Calibri';
   canvasContext.fillText('New High Score!  ' + Math.ceil(points) + ' Points!', 150, 100);
   canvasContext.font = 'italic 40pt Times Roman';
@@ -99,6 +98,11 @@ function delayedBlackScreen(){setTimeout(function(){
   document.querySelector('img').setAttribute('style','display: block');
   setTimeout(function(){
     document.querySelector('img').src = "./Images/playAgain.png";
+    document.querySelector('img').addEventListener('click', function (e) {
+      // This doesn't allow for saving high score. But is better than nothing for now
+      window.location.reload();
+
+    });
   }, 2000);
 }, 3500);
 }
