@@ -99,9 +99,8 @@ function drawOptionMenu() {
   new Image(lightPinkMainCarPicLoaded, lightPinkMainCarPic, 600, 400);
 
 
-// This allows you to select car color
+// This function allows you to select car color
   canvas.addEventListener('click', function(e) {
-
     // calculate x y coordinates on canvas. (if you change dimensions, need to adjust these)
     var x = e.pageX - $(this).offset().left,
     y = e.pageY - $(this).offset().top;

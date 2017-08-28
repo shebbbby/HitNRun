@@ -169,10 +169,83 @@ pickleRickPic.onload = function(){
 }
 pickleRickPic.src = "./Images/pickleRick.png"
 
+var spongebobPic = document.createElement("img");
+var spongebobPicLoaded = false;
+spongebobPic.onload = function(){
+  spongebobPicLoaded = true;
+}
+spongebobPic.src = "./Images/spongebob.png"
+
+var patrickPic = document.createElement("img");
+var patrickPicLoaded = false;
+patrickPic.onload = function(){
+  patrickPicLoaded = true;
+}
+patrickPic.src = "./Images/patrick.png"
+
+var linkPic = document.createElement("img");
+var linkPicLoaded = false;
+linkPic.onload = function(){
+  linkPicLoaded = true;
+}
+linkPic.src = "./Images/link.png"
+
+var sonicPic = document.createElement("img");
+var sonicPicLoaded = false;
+sonicPic.onload = function(){
+  sonicPicLoaded = true;
+}
+sonicPic.src = "./Images/sonic.png"
+
+var marioPic = document.createElement("img");
+var marioPicLoaded = false;
+marioPic.onload = function(){
+  marioPicLoaded = true;
+}
+marioPic.src = "./Images/mario.png"
+
+var jerryPic = document.createElement("img");
+var jerryPicLoaded = false;
+jerryPic.onload = function(){
+jerryPicLoaded = true;
+}
+jerryPic.src = "./Images/jerry.png"
+
+var summerPic = document.createElement("img");
+var summerPicLoaded = false;
+summerPic.onload = function(){
+  summerPicLoaded = true;
+}
+summerPic.src = "./Images/summer.png"
+
+var meeseeksPic = document.createElement("img");
+var meeseeksPicLoaded = false;
+meeseeksPic.onload = function(){
+  meeseeksPicLoaded = true;
+}
+meeseeksPic.src = "./Images/meeseeks.png"
+
+var poopybuttholePic = document.createElement("img");
+var poopybuttholePicLoaded = false;
+poopybuttholePic.onload = function(){
+  poopybuttholePicLoaded = true;
+}
+poopybuttholePic.src = "./Images/poopybutthole.png"
+
+var billcipherPic = document.createElement("img");
+var billcipherPicLoaded = false;
+billcipherPic.onload = function(){
+  billcipherPicLoaded = true;
+}
+billcipherPic.src = "./Images/billcipher.gif"
+
 
 
 var people = ["./Images/grandmaa.png", "./Images/cartman.png", "./Images/sumoCartman.gif",
-"./Images/retardCartman.png", "./Images/rick.png", "./Images/morty.png", "./Images/pickleRick.png"];
+"./Images/retardCartman.png", "./Images/rick.png", "./Images/morty.png", "./Images/pickleRick.png",
+"./Images/spongebob.png", "./Images/patrick.png", "./Images/link.png", "./Images/sonic.png",
+"./Images/mario.png", "./Images/jerry.png", "./Images/summer.png", "./Images/meeseeks.png",
+"./Images/poopybutthole.png", "./Images/billcipher.gif"];
 
 // Purple Traffic Car
 var trafficCarPic = document.createElement("img");
