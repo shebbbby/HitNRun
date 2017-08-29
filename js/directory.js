@@ -257,4 +257,5 @@ if(pictureLoaded){
 canvasContext.drawImage(picture,
 leftX, topY);
 }
+
 };
