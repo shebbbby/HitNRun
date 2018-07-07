@@ -7,7 +7,11 @@ window.onload = function() {
 
 //After clicking canvas, execute everything in exitOptionsMenu (Make it work only once)
   canvas.addEventListener('click',exitOptionsMenu,false);
+
+  let clickedAlready = false;
   function exitOptionsMenu(e){
+    if(!clickedAlready){
+        clickedAlready = true;
           // Play intro scene
         introSounds(); // All sounds for intro
         var intro = setInterval(callBothIntro, 1000/framesPerSecond);
@@ -45,9 +49,9 @@ window.onload = function() {
 
 
 
-  // LEFT AND RIGHT KEY DOWN
-  document.addEventListener('keydown',keyDownListener,false);
-  function keyDownListener(e){
+    // LEFT AND RIGHT KEY DOWN
+    document.addEventListener('keydown',keyDownListener,false);
+    function keyDownListener(e){
     switch (e.keyCode){
       case 37:
       if(carY > 150){
@@ -69,7 +73,9 @@ window.onload = function() {
       }
       break;
     }
-  }
+    }
+    }
+
 }
 }
 // Draw Selection Screen
