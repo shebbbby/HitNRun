@@ -80,6 +80,24 @@ window.onload = function() {
 }
 // Draw Selection Screen
 
+
+// CAR SELECTION IMAGE INFO: ---------------------------------------------------------------
+var carXPos = 60,carYPos = 200, carWidth = 132,carHeight = 60;
+var purpleXPos = 240,purpleYPos = 200, purpleWidth = 132,purpleHeight = 60;
+var lightPurpleXPos = 420,lightPurpleYPos = 200, lightPurpleWidth = 132,lightPurpleHeight = 60;
+var blueXPos = 600,blueYPos = 200, blueWidth = 132,blueHeight = 60;
+var darkBlueXPos = 60,darkBlueYPos = 300, darkBlueWidth = 132,darkBlueHeight = 60;
+var grayXPos = 240,grayYPos = 300, grayWidth = 132,grayHeight = 60;
+var whiteXPos = 420,whiteYPos = 300, whiteWidth = 132,whiteHeight = 60;
+var yellowXPos = 600,yellowYPos = 300, yellowWidth = 132,yellowHeight = 60;
+var greenXPos = 60,greenYPos = 400, greenWidth = 132,greenHeight = 60;
+var darkGreenXPos = 240,darkGreenYPos = 400, darkGreenWidth = 132,darkGreenHeight = 60;
+var lightGreenXPos = 420,lightGreenYPos = 400, lightGreenWidth = 132,lightGreenHeight = 60;
+var lightPinkXPos = 600,lightPinkYPos = 400, lightPinkWidth = 132,lightPinkHeight = 60;
+
+// -----------------------------------------------------------------------------------------
+
+
 function drawOptionMenu() {
   // black screen
   colorRect(0,0,canvas.width,canvas.height, 'black');
@@ -91,19 +109,176 @@ function drawOptionMenu() {
   canvasContext.font = '60pt Calibri';
   canvasContext.lineWidth = 4;
   canvasContext.strokeStyle = 'white';
-  new Image(carPicLoaded, carPic, 60, 200);
-  new Image(purpleCarPicLoaded, purpleMainCarPic, 240, 200);
-  new Image(lightPurpleCarPicLoaded, lightPurpleMainCarPic, 420, 200);
-  new Image(blueCarPicLoaded, blueMainCarPic, 600, 200);
-  new Image(darkBlueCarPicLoaded, darkBlueCarPic, 60, 300);
-  new Image(grayCarPicLoaded, grayMainCarPic, 240, 300);
-  new Image(whiteMainCarPicLoaded, whiteMainCarPic, 420, 300);
-  new Image(yellowMainCarPicLoaded, yellowMainCarPic, 600, 300);
-  new Image(greenMainCarPicLoaded, greenMainCarPic, 60, 400);
-  new Image(darkGreenMainCarPicLoaded, darkGreenMainCarPic, 240, 400);
-  new Image(lightGreenMainCarPicLoaded, lightGreenMainCarPic, 420, 400);
-  new Image(lightPinkMainCarPicLoaded, lightPinkMainCarPic, 600, 400);
 
+  new Image(carPicLoaded, carPic, carXPos, carYPos,carWidth,carHeight);
+  new Image(purpleCarPicLoaded, purpleMainCarPic, purpleXPos, purpleYPos,purpleWidth,purpleHeight);
+  new Image(lightPurpleCarPicLoaded, lightPurpleMainCarPic, lightPurpleXPos, lightPurpleYPos,lightPurpleWidth,lightPurpleHeight);
+  new Image(blueCarPicLoaded, blueMainCarPic, blueXPos, blueYPos,blueWidth,blueHeight);
+  new Image(darkBlueCarPicLoaded, darkBlueCarPic, darkBlueXPos, darkBlueYPos,darkBlueWidth,darkBlueHeight);
+  new Image(grayCarPicLoaded, grayMainCarPic, grayXPos, grayYPos,grayWidth,grayHeight);
+  new Image(whiteMainCarPicLoaded, whiteMainCarPic, whiteXPos, whiteYPos,whiteWidth,whiteHeight);
+  new Image(yellowMainCarPicLoaded, yellowMainCarPic, yellowXPos, yellowYPos,yellowWidth,yellowHeight);
+  new Image(greenMainCarPicLoaded, greenMainCarPic, greenXPos, greenYPos,greenWidth,greenHeight);
+  new Image(darkGreenMainCarPicLoaded, darkGreenMainCarPic, darkGreenXPos, darkGreenYPos,darkGreenWidth,darkGreenHeight);
+  new Image(lightGreenMainCarPicLoaded, lightGreenMainCarPic, lightGreenXPos, lightGreenYPos,lightGreenWidth,lightGreenHeight);
+  new Image(lightPinkMainCarPicLoaded, lightPinkMainCarPic, lightPinkXPos, lightPinkYPos,lightPinkWidth,lightPinkHeight);
+
+
+  canvas.addEventListener('mousemove', function(e) {
+    // calculate x y coordinates on canvas. (if you change dimensions, need to adjust these)
+    var x = e.pageX - $(this).offset().left,
+    y = e.pageY - $(this).offset().top;
+
+    // Make selection magnified upon hover
+    if (y > 200 && y < 260
+        && x > 60 && x < 200) {
+          carXPos = 50;
+          carYPos = 190;
+          carWidth = 160;
+          carHeight = 73;
+          document.querySelector('canvas').cursor = 'pointer';
+    }else{
+          carXPos = 60;
+          carYPos = 200;
+          carWidth = 132;
+          carHeight = 60;
+    }
+
+    if (y > 200 && y < 260
+        && x > 420 && x < 560) {
+          lightPurpleXPos = 410;
+          lightPurpleYPos = 190;
+          lightPurpleWidth = 160;
+          lightPurpleHeight = 73;
+    }else{
+          lightPurpleXPos = 420;
+          lightPurpleYPos = 200;
+          lightPurpleWidth = 132;
+          lightPurpleHeight = 60;
+    }
+    if (y > 200 && y < 260
+        && x > 240 && x < 380) {
+          purpleXPos = 230;
+          purpleYPos = 190;
+          purpleWidth = 160;
+          purpleHeight = 73;
+    }else{
+          purpleXPos = 240;
+          purpleYPos = 200;
+          purpleWidth = 132;
+          purpleHeight = 60;
+    }
+    if (y > 200 && y < 260
+        && x > 600 && x < 740) {
+          blueXPos = 590;
+          blueYPos = 190;
+          blueWidth = 160;
+          blueHeight = 73;
+    }else{
+          blueXPos = 600;
+          blueYPos = 200;
+          blueWidth = 132;
+          blueHeight = 60;
+    }
+    if (y > 300 && y < 360
+        && x > 60 && x < 200) {
+          darkBlueXPos = 50;
+          darkBlueYPos = 290;
+          darkBlueWidth = 160;
+          darkBlueHeight = 73;
+    }else{
+          darkBlueXPos = 60;
+          darkBlueYPos = 300;
+          darkBlueWidth = 132;
+          darkBlueHeight = 60;
+    }
+    if (y > 300 && y < 360
+        && x > 240 && x < 380) {
+          grayXPos = 230;
+          grayYPos = 290;
+          grayWidth = 160;
+          grayHeight = 73;
+    }else{
+          grayXPos = 240;
+          grayYPos = 300;
+          grayWidth = 132;
+          grayHeight = 60;
+    }
+    if (y > 300 && y < 360
+        && x > 420 && x < 560) {
+          whiteXPos = 410;
+          whiteYPos = 290;
+          whiteWidth = 160;
+          whiteHeight = 73;
+    }else{
+          whiteXPos = 420;
+          whiteYPos = 300;
+          whiteWidth = 132;
+          whiteHeight = 60;
+    }
+    if (y > 300 && y < 360
+        && x > 600 && x < 740) {
+          yellowXPos = 590;
+          yellowYPos = 290;
+          yellowWidth = 160;
+          yellowHeight = 73;
+    }else{
+          yellowXPos = 600;
+          yellowYPos = 300;
+          yellowWidth = 132;
+          yellowHeight = 60;
+    }
+    if (y > 400 && y < 460
+        && x > 60 && x < 200) {
+          greenXPos = 50;
+          greenYPos = 390;
+          greenWidth = 160;
+          greenHeight = 73;
+    }else{
+          greenXPos = 60;
+          greenYPos = 400;
+          greenWidth = 132;
+          greenHeight = 60;
+    }
+    if (y > 400 && y < 460
+        && x > 240 && x < 380) {
+          darkGreenXPos = 230;
+          darkGreenYPos = 390;
+          darkGreenWidth = 160;
+          darkGreenHeight = 73;
+    }else{
+          darkGreenXPos = 240;
+          darkGreenYPos = 400;
+          darkGreenWidth = 132;
+          darkGreenHeight = 60;
+    }
+    if (y > 400 && y < 460
+        && x > 420 && x < 560) {
+          lightGreenXPos = 410;
+          lightGreenYPos = 390;
+          lightGreenWidth = 160;
+          lightGreenHeight = 73;
+    }else{
+          lightGreenXPos = 420;
+          lightGreenYPos = 400;
+          lightGreenWidth = 132;
+          lightGreenHeight = 60;
+    }
+    if (y > 400 && y < 460
+        && x > 600 && x < 740) {
+          lightPinkXPos = 590;
+          lightPinkYPos = 390;
+          lightPinkWidth = 160;
+          lightPinkHeight = 73;
+    }else{
+          lightPinkXPos = 600;
+          lightPinkYPos = 400;
+          lightPinkWidth = 132;
+          lightPinkHeight = 60;
+    }
+    // document.querySelector('canvas').setAttribute('style', 'width: 60%;')
+
+});
 
 // This function allows you to select car color
   canvas.addEventListener('click', function(e) {

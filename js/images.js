@@ -10,6 +10,7 @@ carPic.onload = function(){
 // Red Main Car
 carPic.src ="./Images/mainRedCar.png";
 
+
 var purpleMainCarPic = document.createElement("img");
 var purpleCarPicLoaded = false;
 purpleMainCarPic.onload = function(){

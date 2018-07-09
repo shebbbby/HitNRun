@@ -254,10 +254,12 @@ function colorRect(leftX, topY, width, height, drawColor){
 }
 
 // Image Constructor (Cars, People, Trees)
-function Image(pictureLoaded, picture, leftX, topY){
-if(pictureLoaded){
-canvasContext.drawImage(picture,
-leftX, topY);
-}
+function Image(pictureLoaded, picture, leftX, topY,width,length){
+  if(pictureLoaded && width && length){
+    canvasContext.drawImage(picture,leftX,topY,width,length);
+  }
+  else if(pictureLoaded){
+    canvasContext.drawImage(picture,leftX,topY);
+  }
 
 };
