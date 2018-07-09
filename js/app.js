@@ -340,6 +340,7 @@ function drawOptionMenu() {
 
 // DRAW INTRO MOVIE SCENE
 function drawIntro() {
+  document.querySelector('#directions').innerHTML = ' Please wait for intro movie to end';
   // black screen
   colorRect(0,0,canvas.width,canvas.height, 'black');
   // Top Grass
@@ -426,6 +427,8 @@ function moveIntro() {
 
 // DRAW ACTUAL GAME!!!
 function drawGame() {
+  document.querySelector('#directions').innerHTML = ' Move using left (<) and right (>) keys! ';
+
   // black screen
   colorRect(0,0,canvas.width,canvas.height, 'black');
   // Top Grass
