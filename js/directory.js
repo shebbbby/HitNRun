@@ -10,6 +10,13 @@ var crash = new Audio("./sounds/carCrash.mp3");
 var siren = new Audio("./sounds/siren2.mp3");
 var godDamn = new Audio("./sounds/noopnoop.mp3");
 
+honking.volume = 0.3;
+policeSiren.volume = 0.3;
+splat.volume = 0.5;
+crash.volume = 0.3;
+siren.volume = 0.3;
+godDamn.volume = 1;
+
 // All sounds in the intro (honking, crash, policeSiren);
 function introSounds(){
   var twoHonks = setInterval(function(){
