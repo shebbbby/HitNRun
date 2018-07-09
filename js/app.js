@@ -52,30 +52,31 @@ window.onload = function() {
     // LEFT AND RIGHT KEY DOWN
     document.addEventListener('keydown',keyDownListener,false);
     function keyDownListener(e){
-    switch (e.keyCode){
-      case 37:
-      if(carY > 150){
-      carY = carY - laneSwitch;
-      // carPic.src = "file:///Users/Shebby/Downloads/imageedit_18_3872202865.png"
+      if(gameHasStarted){
+        switch (e.keyCode){
+          case 37:
+          if(carY > 150){
+          carY = carY - laneSwitch;
+          // carPic.src = "file:///Users/Shebby/Downloads/imageedit_18_3872202865.png"
+          }
+          if(carY < 150){
+            carY = carY - 0;
+          }
+          break;
+          case 39:
+          if(carY < 290){
+          carY = carY + laneSwitch;
+          // 80 for lane switching
+          // carPic.src = "file:///Users/Shebby/Downloads/rightCar.png"
+          }
+          if(carY > 290){
+            carY = carY + 0;
+          }
+          break;
+        }
       }
-      if(carY < 150){
-        carY = carY - 0;
-      }
-      break;
-      case 39:
-      if(carY < 290){
-      carY = carY + laneSwitch;
-      // 80 for lane switching
-      // carPic.src = "file:///Users/Shebby/Downloads/rightCar.png"
-      }
-      if(carY > 290){
-        carY = carY + 0;
-      }
-      break;
     }
     }
-    }
-
 }
 }
 // Draw Selection Screen
@@ -390,6 +391,8 @@ new Image(treePicLoaded, treePic, treeX * 6, 430);
 new Image(treePicLoaded2, treePic2, treeX * 7, 430);
 };
 
+
+
 // These are all the moving directions during intro movie
 function moveIntro() {
   // Move car horizontally
@@ -425,8 +428,10 @@ function moveIntro() {
     }
   };
 
+var gameHasStarted = false;
 // DRAW ACTUAL GAME!!!
 function drawGame() {
+  gameHasStarted = true;
   document.querySelector('#directions').innerHTML = ' Move using left (<) and right (>) keys! ';
 
   // black screen
