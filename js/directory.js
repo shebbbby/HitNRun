@@ -9,6 +9,8 @@ var splat = new Audio("./sounds/splatNoise.mp3");
 var crash = new Audio("./sounds/carCrash.mp3");
 var siren = new Audio("./sounds/siren2.mp3");
 var godDamn = new Audio("./sounds/noopnoop.mp3");
+var selectionSound = new Audio("./sounds/selection.mp3");
+
 
 honking.volume = 0.3;
 policeSiren.volume = 0.3;
@@ -93,6 +95,7 @@ function endGame(){
 function delayedBlackScreen(){setTimeout(function(){
   colorRect(0,0,canvas.width,canvas.height, 'black');
   // Putting text on score screen
+  document.querySelector('#directions').innerHTML = ' YOU LOST! Press play again to start over!';
   canvasContext.font = 'bold 10pt Calibri';
   canvasContext.fillText('New High Score!  ' + Math.ceil(points) + ' Points!', 150, 100);
   canvasContext.font = 'italic 40pt Times Roman';

@@ -10,7 +10,21 @@ window.onload = function() {
 
   let clickedAlready = false;
   function exitOptionsMenu(e){
-    if(!clickedAlready){
+    var x = e.pageX - $(this).offset().left;
+    var y = e.pageY - $(this).offset().top;
+    if(!clickedAlready && // AND make sure click only works if user selected car color
+    !(!(y > 200 && y < 260 && x > 60 && x < 200) &&
+    !(y > 200 && y < 260 && x > 420 && x < 560) &&
+    !(y > 200 && y < 260 && x > 240 && x < 380) &&
+    !(y > 200 && y < 260 && x > 600 && x < 740) &&
+    !(y > 300 && y < 360 && x > 60 && x < 200) &&
+    !(y > 300 && y < 360 && x > 240 && x < 380) &&
+    !(y > 300 && y < 360 && x > 420 && x < 560) &&
+    !(y > 300 && y < 360 && x > 600 && x < 740) &&
+    !(y > 400 && y < 460 && x > 60 && x < 200) &&
+    !(y > 400 && y < 460 && x > 420 && x < 560) &&
+    !(y > 400 && y < 460 && x > 240 && x < 380) &&
+    !(y > 400 && y < 460 && x > 600 && x < 740))){
         clickedAlready = true;
           // Play intro scene
         introSounds(); // All sounds for intro
@@ -99,6 +113,14 @@ var lightPinkXPos = 600,lightPinkYPos = 400, lightPinkWidth = 132,lightPinkHeigh
 // -----------------------------------------------------------------------------------------
 
 
+var shouldPlaySelectionSound = true;
+function playSelectionSound(){
+  if(shouldPlaySelectionSound && !introHasStarted){
+    selectionSound.play();
+    shouldPlaySelectionSound = false;
+  }
+}
+
 function drawOptionMenu() {
   // black screen
   colorRect(0,0,canvas.width,canvas.height, 'black');
@@ -125,6 +147,7 @@ function drawOptionMenu() {
   new Image(lightPinkMainCarPicLoaded, lightPinkMainCarPic, lightPinkXPos, lightPinkYPos,lightPinkWidth,lightPinkHeight);
 
 
+
   canvas.addEventListener('mousemove', function(e) {
     // calculate x y coordinates on canvas. (if you change dimensions, need to adjust these)
     var x = e.pageX - $(this).offset().left,
@@ -137,7 +160,7 @@ function drawOptionMenu() {
           carYPos = 190;
           carWidth = 160;
           carHeight = 73;
-          document.querySelector('canvas').cursor = 'pointer';
+          playSelectionSound();
     }else{
           carXPos = 60;
           carYPos = 200;
@@ -151,6 +174,8 @@ function drawOptionMenu() {
           lightPurpleYPos = 190;
           lightPurpleWidth = 160;
           lightPurpleHeight = 73;
+          playSelectionSound();
+
     }else{
           lightPurpleXPos = 420;
           lightPurpleYPos = 200;
@@ -163,6 +188,7 @@ function drawOptionMenu() {
           purpleYPos = 190;
           purpleWidth = 160;
           purpleHeight = 73;
+          playSelectionSound();
     }else{
           purpleXPos = 240;
           purpleYPos = 200;
@@ -175,6 +201,7 @@ function drawOptionMenu() {
           blueYPos = 190;
           blueWidth = 160;
           blueHeight = 73;
+          playSelectionSound();
     }else{
           blueXPos = 600;
           blueYPos = 200;
@@ -187,6 +214,7 @@ function drawOptionMenu() {
           darkBlueYPos = 290;
           darkBlueWidth = 160;
           darkBlueHeight = 73;
+          playSelectionSound();
     }else{
           darkBlueXPos = 60;
           darkBlueYPos = 300;
@@ -199,6 +227,7 @@ function drawOptionMenu() {
           grayYPos = 290;
           grayWidth = 160;
           grayHeight = 73;
+          playSelectionSound();
     }else{
           grayXPos = 240;
           grayYPos = 300;
@@ -211,6 +240,7 @@ function drawOptionMenu() {
           whiteYPos = 290;
           whiteWidth = 160;
           whiteHeight = 73;
+          playSelectionSound();
     }else{
           whiteXPos = 420;
           whiteYPos = 300;
@@ -223,6 +253,7 @@ function drawOptionMenu() {
           yellowYPos = 290;
           yellowWidth = 160;
           yellowHeight = 73;
+          playSelectionSound();
     }else{
           yellowXPos = 600;
           yellowYPos = 300;
@@ -235,6 +266,7 @@ function drawOptionMenu() {
           greenYPos = 390;
           greenWidth = 160;
           greenHeight = 73;
+          playSelectionSound();
     }else{
           greenXPos = 60;
           greenYPos = 400;
@@ -247,6 +279,7 @@ function drawOptionMenu() {
           darkGreenYPos = 390;
           darkGreenWidth = 160;
           darkGreenHeight = 73;
+          playSelectionSound();
     }else{
           darkGreenXPos = 240;
           darkGreenYPos = 400;
@@ -259,6 +292,7 @@ function drawOptionMenu() {
           lightGreenYPos = 390;
           lightGreenWidth = 160;
           lightGreenHeight = 73;
+          playSelectionSound();
     }else{
           lightGreenXPos = 420;
           lightGreenYPos = 400;
@@ -271,11 +305,28 @@ function drawOptionMenu() {
           lightPinkYPos = 390;
           lightPinkWidth = 160;
           lightPinkHeight = 73;
+          playSelectionSound();
     }else{
           lightPinkXPos = 600;
           lightPinkYPos = 400;
           lightPinkWidth = 132;
           lightPinkHeight = 60;
+    }
+
+    // If user has hovered anywhere around selections, reactivate the selection sound.
+    if(!(y > 200 && y < 260 && x > 60 && x < 200) &&
+    !(y > 200 && y < 260 && x > 420 && x < 560) &&
+    !(y > 200 && y < 260 && x > 240 && x < 380) &&
+    !(y > 200 && y < 260 && x > 600 && x < 740) &&
+    !(y > 300 && y < 360 && x > 60 && x < 200) &&
+    !(y > 300 && y < 360 && x > 240 && x < 380) &&
+    !(y > 300 && y < 360 && x > 420 && x < 560) &&
+    !(y > 300 && y < 360 && x > 600 && x < 740) &&
+    !(y > 400 && y < 460 && x > 60 && x < 200) &&
+    !(y > 400 && y < 460 && x > 420 && x < 560) &&
+    !(y > 400 && y < 460 && x > 240 && x < 380) &&
+    !(y > 400 && y < 460 && x > 600 && x < 740)){
+      shouldPlaySelectionSound = true;
     }
     // document.querySelector('canvas').setAttribute('style', 'width: 60%;')
 
@@ -288,59 +339,64 @@ function drawOptionMenu() {
     y = e.pageY - $(this).offset().top;
     console.log(y, x)
 
-    // implement collision detection via the coordinates the element you want to click (assuming you know where it is)
-    if (y > 200 && y < 260
-        && x > 240 && x < 380) {
-        carPic.src ="./Images/purpleMainCar.png";
+    if(!introHasStarted){
+      // implement collision detection via the coordinates the element you want to click (assuming you know where it is)
+      if (y > 200 && y < 260
+          && x > 240 && x < 380) {
+          carPic.src ="./Images/purpleMainCar.png";
+      }
+      if (y > 200 && y < 260
+          && x > 420 && x < 560) {
+          carPic.src ="./Images/lightPurpleMainCar.png";
+      }
+      if (y > 200 && y < 260
+          && x > 600 && x < 740) {
+          carPic.src ="./Images/blueMainCar.png";
+      }
+      if (y > 300 && y < 360
+          && x > 60 && x < 200) {
+          carPic.src ="./Images/darkBlueMainCar.png";
+      }
+      if (y > 300 && y < 360
+          && x > 240 && x < 380) {
+          carPic.src ="./Images/grayMainCar.png";
+      }
+      if (y > 300 && y < 360
+          && x > 420 && x < 560) {
+          carPic.src ="./Images/whiteMainCar.png";
+      }
+      if (y > 300 && y < 360
+          && x > 600 && x < 740) {
+          carPic.src ="./Images/yellowMainCar.png";
+      }
+      if (y > 400 && y < 460
+          && x > 60 && x < 200) {
+          carPic.src ="./Images/greenMainCar.png";
+      }
+      if (y > 400 && y < 460
+          && x > 240 && x < 380) {
+          carPic.src ="./Images/darkGreenMainCar.png";
+      }
+      if (y > 400 && y < 460
+          && x > 420 && x < 560) {
+          carPic.src ="./Images/lightGreenMainCar.png";
+      }
+      if (y > 400 && y < 460
+          && x > 600 && x < 740) {
+          carPic.src ="./Images/lightPinkMainCar.png";
+      }
     }
-    if (y > 200 && y < 260
-        && x > 420 && x < 560) {
-        carPic.src ="./Images/lightPurpleMainCar.png";
-    }
-    if (y > 200 && y < 260
-        && x > 600 && x < 740) {
-        carPic.src ="./Images/blueMainCar.png";
-    }
-    if (y > 300 && y < 360
-        && x > 60 && x < 200) {
-        carPic.src ="./Images/darkBlueMainCar.png";
-    }
-    if (y > 300 && y < 360
-        && x > 240 && x < 380) {
-        carPic.src ="./Images/grayMainCar.png";
-    }
-    if (y > 300 && y < 360
-        && x > 420 && x < 560) {
-        carPic.src ="./Images/whiteMainCar.png";
-    }
-    if (y > 300 && y < 360
-        && x > 600 && x < 740) {
-        carPic.src ="./Images/yellowMainCar.png";
-    }
-    if (y > 400 && y < 460
-        && x > 60 && x < 200) {
-        carPic.src ="./Images/greenMainCar.png";
-    }
-    if (y > 400 && y < 460
-        && x > 240 && x < 380) {
-        carPic.src ="./Images/darkGreenMainCar.png";
-    }
-    if (y > 400 && y < 460
-        && x > 420 && x < 560) {
-        carPic.src ="./Images/lightGreenMainCar.png";
-    }
-    if (y > 400 && y < 460
-        && x > 600 && x < 740) {
-        carPic.src ="./Images/lightPinkMainCar.png";
-    }
+
 
     // document.querySelector('canvas').setAttribute('style', 'width: 60%;')
 
 });
 }
 
+var introHasStarted = false;
 // DRAW INTRO MOVIE SCENE
 function drawIntro() {
+  introHasStarted = true;
   document.querySelector('#directions').innerHTML = ' Please wait for intro movie to end';
   // black screen
   colorRect(0,0,canvas.width,canvas.height, 'black');
