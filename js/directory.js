@@ -11,6 +11,7 @@ var siren = new Audio("./sounds/siren2.mp3");
 var godDamn = new Audio("./sounds/noopnoop.mp3");
 var selectionSound = new Audio("./sounds/selection.mp3");
 var driveOff = new Audio("./sounds/drive-off.wav");
+var nightcall = new Audio("./sounds/nightcall.mp3");
 
 var shouldDriveOff = false;
 function driveOffSound(){
@@ -28,6 +29,7 @@ splat.volume = 0.5;
 crash.volume = 0.3;
 siren.volume = 0.3;
 godDamn.volume = 1;
+nightcall.volume = 0.5;
 
 // All sounds in the intro (honking, crash, policeSiren);
 function introSounds(){

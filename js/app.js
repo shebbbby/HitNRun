@@ -27,6 +27,7 @@ window.onload = function() {
     !(y > 400 && y < 460 && x > 600 && x < 740))){
         clickedAlready = true;
           // Play intro scene
+        nightcall.pause();
         introSounds(); // All sounds for intro
         var intro = setInterval(callBothIntro, 1000/framesPerSecond);
 
@@ -132,6 +133,7 @@ function drawOptionMenu() {
   canvasContext.font = '60pt Calibri';
   canvasContext.lineWidth = 4;
   canvasContext.strokeStyle = 'white';
+  nightcall.play();
 
   new Image(carPicLoaded, carPic, carXPos, carYPos,carWidth,carHeight);
   new Image(purpleCarPicLoaded, purpleMainCarPic, purpleXPos, purpleYPos,purpleWidth,purpleHeight);
