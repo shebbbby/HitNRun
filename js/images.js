@@ -359,6 +359,15 @@ treePicLoaded2 = true;
 treePic2.src = "./Images/tree3.png"
 
 
+// Tire Tracks
+var tireTracks = document.createElement("img");
+var tireTracksPicLoaded = false;
+
+tireTracks.onload = function(){
+tireTracksPicLoaded = true;
+};
+tireTracks.src = "./Images/tire-tracks.png"
+
 
 // Play Again Button
 var playAgainPic = document.createElement("img");

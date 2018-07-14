@@ -445,6 +445,12 @@ new Image(treePicLoaded, treePic, treeX * 4, 430);
 new Image(treePicLoaded1, treePic1, treeX * 5, 430);
 new Image(treePicLoaded, treePic, treeX * 6, 430);
 new Image(treePicLoaded2, treePic2, treeX * 7, 430);
+
+
+
+
+
+
 };
 
 
