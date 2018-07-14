@@ -259,7 +259,7 @@ var pursueDriver = function(){
 var copColor = '#00c3fe';
 // Change cop color (Make it happen at right time)
 setInterval(function (){
-  if(copColor === '#0000fe'){
+  if(copColor === '#0000fe' && grandmaHasBeenRunOver){
     copColor = '#00c3fe';
     }
   else{

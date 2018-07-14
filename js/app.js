@@ -457,6 +457,7 @@ new Image(treePicLoaded2, treePic2, treeX * 7, 430);
 
 
 
+var grandmaHasBeenRunOver = false;
 // These are all the moving directions during intro movie
 function moveIntro() {
   // Move car horizontally
@@ -467,7 +468,11 @@ function moveIntro() {
           //Main Car hits grandma and stops
           carSpeedX = stop;
           //grandma gets hit, splattered "blood"
-          grandmaPic.src = "./Images/blood.png"
+          grandmaPic.src = "./Images/blood.png";
+          setTimeout(function(){
+            grandmaHasBeenRunOver = true;
+          },1000);
+
           // Find way to store carX value without having to reference it, so that blood could stay there.
           grandmaX = 430 + splatterDistance; // NEED TO FIGURE OUT HOW TO USE carX and not 430
           grandmaY = carY;
@@ -476,6 +481,7 @@ function moveIntro() {
           // This makes cop pursue driver after 2 seconds
           setTimeout(function() {
             pursueDriver();
+
           }, 2000);
 
           if(copY > carY){
