@@ -10,6 +10,16 @@ var crash = new Audio("./sounds/carCrash.mp3");
 var siren = new Audio("./sounds/siren2.mp3");
 var godDamn = new Audio("./sounds/noopnoop.mp3");
 var selectionSound = new Audio("./sounds/selection.mp3");
+var driveOff = new Audio("./sounds/drive-off.wav");
+
+var shouldDriveOff = false;
+function driveOffSound(){
+  if(!shouldDriveOff){
+    driveOff.play();
+    shouldDriveOff = true;
+  }
+
+}
 
 
 honking.volume = 0.3;

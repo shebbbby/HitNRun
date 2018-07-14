@@ -469,10 +469,17 @@ function moveIntro() {
           setTimeout(function() {
             pursueDriver();
           }, 2000);
+
+          if(copY > carY){
+            setTimeout(function (){
+                driveOffSound();
+              }, 4500);
+        }
         // This makes driver wait five seconds after he hits grandma to then drive away.
           if(copY > carY){
             setTimeout(function (){
                 carSpeedX = 35;
+                // driveOff.play();
               }, 5000);
         }
         // Cop Drives after Driver
