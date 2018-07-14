@@ -369,6 +369,25 @@ tireTracksPicLoaded = true;
 tireTracks.src = "./Images/tire-tracks.png"
 
 
+// Tire Tracks
+var muteButton = document.createElement("img");
+var muteButtonPicLoaded = false;
+
+muteButton.onload = function(){
+muteButtonPicLoaded = true;
+};
+muteButton.src = "./Images/mute-button-white.png"
+
+// Tire Tracks
+var playButton = document.createElement("img");
+var playButtonPicLoaded = false;
+
+playButton.onload = function(){
+playButtonPicLoaded = true;
+};
+playButton.src = "./Images/play-button-white.png"
+
+
 // Play Again Button
 var playAgainPic = document.createElement("img");
 var playAgainPicLoaded = false;

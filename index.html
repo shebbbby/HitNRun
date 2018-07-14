@@ -21,7 +21,9 @@
     function startGameButton(){
       document.querySelector('#game-body').style.display = 'block';
       document.querySelector('#start-game-body').style.display = 'none';
-      nightcall.play();
+      if(!pauseSounds){
+        nightcall.play();
+      }
     }
     </script>
 

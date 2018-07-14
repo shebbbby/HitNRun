@@ -16,7 +16,9 @@ var nightcall = new Audio("./sounds/nightcall.mp3");
 var shouldDriveOff = false;
 function driveOffSound(){
   if(!shouldDriveOff){
-    driveOff.play();
+    if(!pauseSounds){
+      driveOff.play();
+    }
     shouldDriveOff = true;
   }
 
@@ -34,16 +36,23 @@ nightcall.volume = 0.5;
 // All sounds in the intro (honking, crash, policeSiren);
 function introSounds(){
   var twoHonks = setInterval(function(){
-    honking.play();
+    if(!pauseSounds){
+      honking.play();
+    }
   },0);
   setTimeout(setTimeout(function(){
-    splat.play();
+    if(!pauseSounds){
+      splat.play();
+    }
+
     // Cars Honking for 6 seconds
   clearInterval( twoHonks )
 }, 6000));
     // Police Sirens begin at 7 seconds
   setTimeout(setTimeout(function(){
+    if(!pauseSounds){
       policeSiren.play();
+    }
     }, 7000));
 }
 
@@ -90,7 +99,9 @@ function endGame(){
 // moveCop();
   trafficSpeedX = stop;
   backgroundSpeed = stop;
-  crash.play();
+  if(!pauseSounds){
+    crash.play();
+  }
   clearInterval(speedUp);
   clearInterval(pointsUp);
   laneSwitch = stop;
@@ -116,7 +127,9 @@ function delayedBlackScreen(){setTimeout(function(){
   canvasContext.font = '40pt Calibri';
   canvasContext.lineWidth = 1;
   canvasContext.strokeStyle = 'white';
-  godDamn.play();
+  if(!pauseSounds){
+    godDamn.play();
+  }
   document.querySelector('img').setAttribute('style','display: block');
   setTimeout(function(){
     document.querySelector('img').src = "./Images/playAgain.png";

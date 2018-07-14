@@ -96,6 +96,8 @@ window.onload = function() {
 }
 // Draw Selection Screen
 
+var pauseSounds = false;
+
 
 // CAR SELECTION IMAGE INFO: ---------------------------------------------------------------
 var carXPos = 60,carYPos = 200, carWidth = 132,carHeight = 60;
@@ -117,8 +119,11 @@ var lightPinkXPos = 600,lightPinkYPos = 400, lightPinkWidth = 132,lightPinkHeigh
 var shouldPlaySelectionSound = true;
 function playSelectionSound(){
   if(shouldPlaySelectionSound && !introHasStarted){
-    selectionSound.play();
-    shouldPlaySelectionSound = false;
+    if(!pauseSounds){
+      selectionSound.play();
+      shouldPlaySelectionSound = false;
+    }
+
   }
 }
 
@@ -146,6 +151,13 @@ function drawOptionMenu() {
   new Image(darkGreenMainCarPicLoaded, darkGreenMainCarPic, darkGreenXPos, darkGreenYPos,darkGreenWidth,darkGreenHeight);
   new Image(lightGreenMainCarPicLoaded, lightGreenMainCarPic, lightGreenXPos, lightGreenYPos,lightGreenWidth,lightGreenHeight);
   new Image(lightPinkMainCarPicLoaded, lightPinkMainCarPic, lightPinkXPos, lightPinkYPos,lightPinkWidth,lightPinkHeight);
+
+  if(!pauseSounds){
+    new Image(playButtonPicLoaded, playButton, 700, 20,50,50);
+  }else{
+    new Image(muteButtonPicLoaded, muteButton, 700, 20,50,50);
+  }
+
 
 
 
@@ -176,7 +188,6 @@ function drawOptionMenu() {
           lightPurpleWidth = 160;
           lightPurpleHeight = 73;
           playSelectionSound();
-
     }else{
           lightPurpleXPos = 420;
           lightPurpleYPos = 200;
@@ -387,12 +398,53 @@ function drawOptionMenu() {
           carPic.src ="./Images/lightPinkMainCar.png";
       }
     }
+    // muteHasBeenClicked prevents button from being pressed more than once
+    if (y > 20 && y < 70
+        && x > 700 && x < 750 && !muteHasBeenClicked) {
+        if(!pauseSounds){
+          pauseSounds = true;
+          muteHasBeenClicked = true;
+          if(!introHasStarted){
+            nightcall.volume = 0;
+            honking.volume = 0;
+            policeSiren.volume = 0;
+            splat.volume = 0;
+            crash.volume = 0;
+            siren.volume = 0;
+            godDamn.volume = 0;
+            selectionSound.volume = 0;
+            driveOff.volume = 0;
+          }
+
+        }else{
+          pauseSounds = false;
+          muteHasBeenClicked = true;
+          if(!introHasStarted){
+            nightcall.volume = 0.5;
+          }
+          honking.volume = 0.5;
+          policeSiren.volume = 0.5;
+          splat.volume = 0.5;
+          crash.volume = 0.5;
+          siren.volume = 0.5;
+          godDamn.volume = 0.5;
+          selectionSound.volume = 0.5;
+          driveOff.volume = 0.5;
+        }
+        setTimeout(function(){
+          muteHasBeenClicked = false;
+        },200)
+    }
 
 
     // document.querySelector('canvas').setAttribute('style', 'width: 60%;')
 
 });
 }
+
+// muteHasBeenClicked prevents button from being pressed more than once
+var muteHasBeenClicked = false;
+
 
 var introHasStarted = false;
 // DRAW INTRO MOVIE SCENE
@@ -446,7 +498,11 @@ new Image(treePicLoaded, treePic, treeX * 4, 430);
 new Image(treePicLoaded1, treePic1, treeX * 5, 430);
 new Image(treePicLoaded, treePic, treeX * 6, 430);
 new Image(treePicLoaded2, treePic2, treeX * 7, 430);
-
+if(!pauseSounds){
+  new Image(playButtonPicLoaded, playButton, 700, 20,50,50);
+}else{
+  new Image(muteButtonPicLoaded, muteButton, 700, 20,50,50);
+}
 
 
 
@@ -509,7 +565,6 @@ var gameHasStarted = false;
 function drawGame() {
   gameHasStarted = true;
   document.querySelector('#directions').innerHTML = ' Move using left (<) and right (>) keys! ';
-
   // black screen
   colorRect(0,0,canvas.width,canvas.height, 'black');
   // Top Grass
@@ -578,8 +633,10 @@ grandmaY = grandmaArrayY[0];
           //grandma gets hit, splattered
           grandmaArrayX[0] = crossX[0]+ splatterDistance/2;
           points += 0.3;
-          grandmaPic.src = "./Images/blood.png"
-          splat.play();
+          grandmaPic.src = "./Images/blood.png";
+          if(!pauseSounds){
+            splat.play();
+          }
           // console.log("splat");
         }
 
@@ -677,6 +734,11 @@ if(trafficLane2[0] === trafficLane1[0]){
 
   // MAIN CAR
   new Image(carPicLoaded, carPic, carX, carY);
+  if(!pauseSounds){
+    new Image(playButtonPicLoaded, playButton, 700, 20,50,50);
+  }else{
+    new Image(muteButtonPicLoaded, muteButton, 700, 20,50,50);
+  }
   //TREES
 // Hitting Cars
 // Hitting back of lane1
