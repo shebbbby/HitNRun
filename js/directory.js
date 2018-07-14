@@ -23,12 +23,12 @@ function driveOffSound(){
 }
 
 
-honking.volume = 0.3;
-policeSiren.volume = 0.3;
-splat.volume = 0.5;
-crash.volume = 0.3;
-siren.volume = 0.3;
-godDamn.volume = 1;
+honking.volume = 0.1;
+policeSiren.volume = 0.2;
+splat.volume = 0.2;
+crash.volume = 0.2;
+siren.volume = 0.2;
+godDamn.volume = 0.5;
 nightcall.volume = 0.5;
 
 // All sounds in the intro (honking, crash, policeSiren);
