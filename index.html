@@ -7,8 +7,27 @@
       <link rel="shortcut icon" href="./images/sports-car-icon.png" type="image/x-icon">
   </head>
   <body>
+    <div id="start-game-body">
+      <p style="margin-left:20px;font-size:20px;">
+        <strong>Directions:</strong> Press "Play Game" Button To Begin Game!
+      </p>
+      <div style="height:530px;width:800px;border:1px solid black;background-color:black;">
+        <!-- <h1 style="color:white;">HIT-N-RUN!</h1> -->
+        <span class='start-btn' onclick="startGameButton()">Play Game</span>
+      </div>
+
+    </div>
+    <script>
+    function startGameButton(){
+      document.querySelector('#game-body').style.display = 'block';
+      document.querySelector('#start-game-body').style.display = 'none';
+      nightcall.play();
+    }
+    </script>
 
 
+
+<div style="display:none;" id="game-body">
   <p style="margin-left:20px;font-size:20px;">
     <strong>Directions:</strong><span id="directions"> Please Select Your Vehicle</span>
   </p>
@@ -22,7 +41,7 @@
   </p> -->
   <span class="text">High Score: <span id="HighScore">Points</span></span>
   <img src="./Images/noopnoop.gif">
-
+</div>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"

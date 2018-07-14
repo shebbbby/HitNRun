@@ -133,7 +133,6 @@ function drawOptionMenu() {
   canvasContext.font = '60pt Calibri';
   canvasContext.lineWidth = 4;
   canvasContext.strokeStyle = 'white';
-  nightcall.play();
 
   new Image(carPicLoaded, carPic, carXPos, carYPos,carWidth,carHeight);
   new Image(purpleCarPicLoaded, purpleMainCarPic, purpleXPos, purpleYPos,purpleWidth,purpleHeight);
