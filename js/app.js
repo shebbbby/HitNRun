@@ -115,7 +115,6 @@ var lightPinkXPos = 600,lightPinkYPos = 400, lightPinkWidth = 132,lightPinkHeigh
 
 // -----------------------------------------------------------------------------------------
 
-
 var shouldPlaySelectionSound = true;
 function playSelectionSound(){
   if(shouldPlaySelectionSound && !introHasStarted){
@@ -488,12 +487,12 @@ function drawIntro() {
   //Traffic lines
   for (var i = 15; i < canvas.width; i+=15){
     for (var y = 130; y <= 370; y+=80)
-    colorRect(i, y, 10,5, 'white');
-}
+      colorRect(i, y, 10,5, 'white');
+  }
   //Gradmas Crosswalk
   for (var i = 105; i < 420; i+=55){
-  colorRect(470, i, 80,20, 'white');
-}
+    colorRect(470, i, 80,20, 'white');
+  }
 
 // MAIN CAR
 new Image(carPicLoaded, carPic, carX, carY);
@@ -593,6 +592,8 @@ var gameHasStarted = false;
 function drawGame() {
   gameHasStarted = true;
   document.querySelector('#directions').innerHTML = ' Move using left (<) and right (>) keys! ';
+  chaseMusic.play();
+  policeSiren.pause();
   // black screen
   colorRect(0,0,canvas.width,canvas.height, 'black');
   // Top Grass

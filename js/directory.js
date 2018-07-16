@@ -12,6 +12,7 @@ var godDamn = new Audio("./sounds/noopnoop.mp3");
 var selectionSound = new Audio("./sounds/selection.mp3");
 var driveOff = new Audio("./sounds/drive-off.wav");
 var nightcall = new Audio("./sounds/nightcall.mp3");
+var chaseMusic = new Audio("./sounds/chase-music.mp3");
 
 var shouldDriveOff = false;
 function driveOffSound(){
@@ -32,6 +33,8 @@ crash.volume = 0.2;
 siren.volume = 0.2;
 godDamn.volume = 0.5;
 nightcall.volume = 0.5;
+chaseMusic.volume = 0.5;
+nightcall.loop = true;
 
 // All sounds in the intro (honking, crash, policeSiren);
 function introSounds(){
@@ -86,17 +89,7 @@ var switcher = 0;
 
 // When crash occurs
 function endGame(){
-//   new Image(copPicLoaded, copPic, copX, copY);
-//   copX  = -150;
-//   copY = 220;
-//   if(copX < 200){
-//   copSpeedX = 4;
-// }
-// function moveCop(){setInterval(function(){
-//   copX = copX + copSpeedX;
-// }, 1000/framesPerSecond);
-// }
-// moveCop();
+  chaseMusic.pause();
   trafficSpeedX = stop;
   backgroundSpeed = stop;
   if(!pauseSounds){
