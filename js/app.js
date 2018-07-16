@@ -166,6 +166,7 @@ function drawOptionMenu() {
     var x = e.pageX - $(this).offset().left,
     y = e.pageY - $(this).offset().top;
 
+if(!introHasStarted){
     // Make selection magnified upon hover
     if (y > 200 && y < 260
         && x > 60 && x < 200) {
@@ -174,6 +175,7 @@ function drawOptionMenu() {
           carWidth = 160;
           carHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           carXPos = 60;
           carYPos = 200;
@@ -188,6 +190,7 @@ function drawOptionMenu() {
           lightPurpleWidth = 160;
           lightPurpleHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           lightPurpleXPos = 420;
           lightPurpleYPos = 200;
@@ -201,6 +204,7 @@ function drawOptionMenu() {
           purpleWidth = 160;
           purpleHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           purpleXPos = 240;
           purpleYPos = 200;
@@ -214,6 +218,7 @@ function drawOptionMenu() {
           blueWidth = 160;
           blueHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           blueXPos = 600;
           blueYPos = 200;
@@ -227,6 +232,7 @@ function drawOptionMenu() {
           darkBlueWidth = 160;
           darkBlueHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           darkBlueXPos = 60;
           darkBlueYPos = 300;
@@ -240,6 +246,7 @@ function drawOptionMenu() {
           grayWidth = 160;
           grayHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           grayXPos = 240;
           grayYPos = 300;
@@ -253,6 +260,7 @@ function drawOptionMenu() {
           whiteWidth = 160;
           whiteHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           whiteXPos = 420;
           whiteYPos = 300;
@@ -266,6 +274,7 @@ function drawOptionMenu() {
           yellowWidth = 160;
           yellowHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           yellowXPos = 600;
           yellowYPos = 300;
@@ -279,6 +288,7 @@ function drawOptionMenu() {
           greenWidth = 160;
           greenHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           greenXPos = 60;
           greenYPos = 400;
@@ -292,6 +302,7 @@ function drawOptionMenu() {
           darkGreenWidth = 160;
           darkGreenHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           darkGreenXPos = 240;
           darkGreenYPos = 400;
@@ -305,6 +316,7 @@ function drawOptionMenu() {
           lightGreenWidth = 160;
           lightGreenHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           lightGreenXPos = 420;
           lightGreenYPos = 400;
@@ -318,12 +330,14 @@ function drawOptionMenu() {
           lightPinkWidth = 160;
           lightPinkHeight = 73;
           playSelectionSound();
+          document.querySelector('canvas').style.cursor = 'pointer';
     }else{
           lightPinkXPos = 600;
           lightPinkYPos = 400;
           lightPinkWidth = 132;
           lightPinkHeight = 60;
     }
+
 
     // If user has hovered anywhere around selections, reactivate the selection sound.
     if(!(y > 200 && y < 260 && x > 60 && x < 200) &&
@@ -337,9 +351,22 @@ function drawOptionMenu() {
     !(y > 400 && y < 460 && x > 60 && x < 200) &&
     !(y > 400 && y < 460 && x > 420 && x < 560) &&
     !(y > 400 && y < 460 && x > 240 && x < 380) &&
-    !(y > 400 && y < 460 && x > 600 && x < 740)){
+    !(y > 400 && y < 460 && x > 600 && x < 740) &&
+    !(y > 20 && y < 70 && x > 700 && x < 750)){
       shouldPlaySelectionSound = true;
+      document.querySelector('canvas').style.cursor = 'default';
+    }else if(y > 20 && y < 70
+        && x > 700 && x < 750){
+      document.querySelector('canvas').style.cursor = 'pointer';
     }
+  }else if(y > 20 && y < 70
+      && x > 700 && x < 750){
+    document.querySelector('canvas').style.cursor = 'pointer';
+  }else{
+    document.querySelector('canvas').style.cursor = 'default';
+  }
+
+
     // document.querySelector('canvas').setAttribute('style', 'width: 60%;')
 
 });
@@ -422,14 +449,15 @@ function drawOptionMenu() {
           if(!introHasStarted){
             nightcall.volume = 0.5;
           }
-          honking.volume = 0.5;
-          policeSiren.volume = 0.5;
-          splat.volume = 0.5;
-          crash.volume = 0.5;
-          siren.volume = 0.5;
+          honking.volume = 0.1;
+          policeSiren.volume = 0.2;
+          splat.volume = 0.2;
+          crash.volume = 0.2;
+          siren.volume = 0.2;
           godDamn.volume = 0.5;
           selectionSound.volume = 0.5;
           driveOff.volume = 0.5;
+
         }
         setTimeout(function(){
           muteHasBeenClicked = false;
