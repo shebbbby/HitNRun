@@ -440,6 +440,7 @@ if(!introHasStarted){
             godDamn.volume = 0;
             selectionSound.volume = 0;
             driveOff.volume = 0;
+            chaseMusic.volume = 0;
           }
 
         }else{
